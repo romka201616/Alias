@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cl43vt1pb4dcl"]
+
+[node name="FinalScreen" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Buttons" type="Node2D" parent="."]
