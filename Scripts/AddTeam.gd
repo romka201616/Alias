@@ -10,24 +10,36 @@ func _ready():
 func _process(delta):
 	pass
 
-
+func get_team():
+	randomize() # Always call this function before using randi() or any other random function.
+	var random_team = Global.teams[randi() % Global.teams.size()]
+	Global.teams.erase(random_team)
+	print(Global.teams)
+	return random_team
+	
+func change_name(label: Label, box: BoxContainer):
+	var line_edit = LineEdit.new()
+	box.add_child(line_edit)
+	pass
+	
 func _on_pressed():
-	var vbox = VBoxContainer.new()
-	add_child(vbox)
+	var box = BoxContainer.new()
+	add_child(box)
 
 	var label = Label.new()
-	label.text = "This is a custom panel"
-	vbox.add_child(label)
+	label.text = get_team()
+	box.add_child(label)
 
 	var color_rect = ColorRect.new()
-	color_rect.color = Color(1, 0, 0)
+	color_rect.color = Color.ALICE_BLUE
 	color_rect.set_size(Vector2(200, 200))
-	vbox.add_child(color_rect)
+	box.add_child(color_rect)
 
 	var button1 = Button.new()
-	button1.text = "Button 1"
-	vbox.add_child(button1)
+	button1.text = "CHANGE"
+	button1.connect("pressed", change_name.bind(label, box))
+	box.add_child(button1)
 
 	var button2 = Button.new()
-	button2.text = "Button 2"
-	vbox.add_child(button2)
+	button2.text = "DELETE"
+	box.add_child(button2)

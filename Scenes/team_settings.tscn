@@ -37,5 +37,11 @@ offset_right = 528.0
 offset_bottom = 934.0
 script = ExtResource("3_mresj")
 
+[node name="TeamPanel" type="Panel" parent="Buttons"]
+offset_left = 1332.0
+offset_top = 272.0
+offset_right = 1818.0
+offset_bottom = 574.0
+
 [connection signal="pressed" from="Buttons/Back" to="Buttons/Back" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/AddTeam" to="Buttons/AddTeam" method="_on_pressed"]

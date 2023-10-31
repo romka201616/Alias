@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://di6jd0trl202l"]
+[gd_scene load_steps=10 format=3 uid="uid://di6jd0trl202l"]
 
 [ext_resource type="Texture2D" uid="uid://7iaefn4i708d" path="res://Sprites/MenuSprite.png" id="1_uec1c"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="2_48msq"]
 [ext_resource type="Script" path="res://Scripts/Exit.gd" id="2_h7mey"]
 [ext_resource type="Script" path="res://Scripts/Global.gd" id="3_5xgv7"]
 [ext_resource type="Script" path="res://Scripts/NewGame.gd" id="3_gckd6"]
-[ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="3_qukpj"]
 [ext_resource type="PackedScene" uid="uid://55kqvo1rwxt5" path="res://Scenes/team_settings.tscn" id="3_rtv31"]
 [ext_resource type="PackedScene" uid="uid://c002brc1qh862" path="res://Scenes/game.tscn" id="3_tydg7"]
 [ext_resource type="PackedScene" uid="uid://lugej58dqox" path="res://Scenes/game_settings.tscn" id="4_3xja1"]
@@ -37,7 +36,6 @@ offset_top = 1250.0
 offset_right = 905.0
 offset_bottom = 1504.0
 theme = ExtResource("2_48msq")
-theme_override_fonts/font = ExtResource("3_qukpj")
 theme_override_font_sizes/font_size = 100
 text = "Новая игра"
 script = ExtResource("3_gckd6")
@@ -49,6 +47,7 @@ offset_right = 905.0
 offset_bottom = 1786.0
 theme = ExtResource("2_48msq")
 theme_override_font_sizes/font_size = 100
+text = "Новая игра"
 
 [node name="Exit" type="Button" parent="Menu/Buttons"]
 offset_left = 689.0
