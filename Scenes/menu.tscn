@@ -49,6 +49,7 @@ offset_right = 905.0
 offset_bottom = 1786.0
 theme = ExtResource("2_48msq")
 theme_override_font_sizes/font_size = 100
+text = "Продолжить"
 
 [node name="Exit" type="Button" parent="Menu/Buttons"]
 offset_left = 689.0
@@ -66,7 +67,7 @@ offset_bottom = 2027.0
 text = "Помощь"
 
 [node name="TeamSettings" parent="." instance=ExtResource("3_rtv31")]
-position = Vector2(1567, 4)
+position = Vector2(1375, 178)
 
 [node name="GameSettings" parent="." instance=ExtResource("4_3xja1")]
 

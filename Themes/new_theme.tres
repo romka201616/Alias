@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dci03lr6r0e62"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dci03lr6r0e62"]
 
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="1_ngug2"]
 [ext_resource type="Texture2D" uid="uid://bxebg30fwwycd" path="res://Themes/UI.png" id="1_s4q7v"]
+[ext_resource type="Texture2D" uid="uid://dfqk3en1ti7cq" path="res://Themes/UI3.png" id="3_5lxoe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xw5dg"]
 content_margin_left = 4.0
@@ -64,8 +65,14 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eha8j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrgic"]
+texture = ExtResource("3_5lxoe")
+region_rect = Rect2(2488, 1140, 640, 392)
+
 [resource]
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_color = Color(0.0431373, 0.533333, 0.980392, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
@@ -88,3 +95,15 @@ Button/styles/focus = SubResource("StyleBoxFlat_m48d5")
 Button/styles/hover = SubResource("StyleBoxFlat_pwuj7")
 Button/styles/normal = SubResource("StyleBoxTexture_b3tcd")
 Button/styles/pressed = SubResource("StyleBoxFlat_00l6f")
+Label/colors/font_color = Color(0.0431373, 0.533333, 0.980392, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("1_ngug2")
+Label/styles/normal = SubResource("StyleBoxEmpty_eha8j")
+Panel/styles/panel = SubResource("StyleBoxTexture_xrgic")

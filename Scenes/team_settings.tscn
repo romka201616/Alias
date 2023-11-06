@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://55kqvo1rwxt5"]
+[gd_scene load_steps=10 format=3 uid="uid://55kqvo1rwxt5"]
 
 [ext_resource type="Texture2D" uid="uid://delrf4hca303q" path="res://Sprites/TeamSettingsSprite.png" id="1_lpu3r"]
+[ext_resource type="Script" path="res://Scripts/Buttons.gd" id="2_e22oj"]
 [ext_resource type="Script" path="res://Scripts/Back.gd" id="2_rflib"]
-[ext_resource type="Script" path="res://Scripts/AddTeam.gd" id="3_mresj"]
+[ext_resource type="Texture2D" uid="uid://dfqk3en1ti7cq" path="res://Themes/UI3.png" id="3_8n8jg"]
+[ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="4_w8ecj"]
+[ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="6_1c21l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8kkn4"]
+texture = ExtResource("3_8n8jg")
+region_rect = Rect2(2488, 628, 640, 392)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2osa8"]
+texture = ExtResource("6_1c21l")
+region_rect = Rect2(1460, 3016, 288, 288)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xibx5"]
+texture = ExtResource("6_1c21l")
+region_rect = Rect2(1828, 3016, 288, 288)
 
 [node name="TeamSettings" type="Node2D"]
 
@@ -14,6 +29,7 @@ offset_bottom = 2340.0
 color = Color(0.494118, 0.643137, 0.988235, 1)
 
 [node name="TeamSettingsSprite" type="Sprite2D" parent="Background"]
+visible = false
 position = Vector2(540, 1200)
 scale = Vector2(3, 3)
 texture = ExtResource("1_lpu3r")
@@ -21,6 +37,7 @@ texture = ExtResource("1_lpu3r")
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Buttons" type="Node2D" parent="."]
+script = ExtResource("2_e22oj")
 
 [node name="Back" type="Button" parent="Buttons"]
 offset_left = 52.0
@@ -31,17 +48,222 @@ text = "Выйти"
 script = ExtResource("2_rflib")
 
 [node name="AddTeam" type="Button" parent="Buttons"]
+offset_left = 43.0
+offset_top = 632.0
+offset_right = 529.0
+offset_bottom = 934.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_8kkn4")
+
+[node name="Teams" type="Node2D" parent="Buttons"]
+
+[node name="TeamPanel1" type="Panel" parent="Buttons/Teams"]
+visible = false
 offset_left = 42.0
 offset_top = 632.0
 offset_right = 528.0
 offset_bottom = 934.0
-script = ExtResource("3_mresj")
+theme = ExtResource("4_w8ecj")
 
-[node name="TeamPanel" type="Panel" parent="Buttons"]
-offset_left = 1332.0
-offset_top = 272.0
-offset_right = 1818.0
-offset_bottom = 574.0
+[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel1"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+
+[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel1"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 132.0
+offset_right = 367.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+
+[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel1"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 416.0
+offset_bottom = 95.0
+theme = ExtResource("4_w8ecj")
+text = "Негрилы"
+horizontal_alignment = 1
+
+[node name="TeamPanel2" type="Panel" parent="Buttons/Teams"]
+visible = false
+offset_left = 545.0
+offset_top = 632.0
+offset_right = 1031.0
+offset_bottom = 934.0
+theme = ExtResource("4_w8ecj")
+
+[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel2"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel2"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 132.0
+offset_right = 367.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+
+[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel2"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 416.0
+offset_bottom = 95.0
+theme = ExtResource("4_w8ecj")
+text = "Негрилы"
+horizontal_alignment = 1
+
+[node name="TeamPanel3" type="Panel" parent="Buttons/Teams"]
+visible = false
+offset_left = 42.0
+offset_top = 966.0
+offset_right = 528.0
+offset_bottom = 1268.0
+theme = ExtResource("4_w8ecj")
+
+[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel3"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel3"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 132.0
+offset_right = 367.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+
+[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel3"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 416.0
+offset_bottom = 95.0
+theme = ExtResource("4_w8ecj")
+text = "Негрилы"
+horizontal_alignment = 1
+
+[node name="TeamPanel4" type="Panel" parent="Buttons/Teams"]
+visible = false
+offset_left = 545.0
+offset_top = 966.0
+offset_right = 1031.0
+offset_bottom = 1268.0
+theme = ExtResource("4_w8ecj")
+
+[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel4"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel4"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 132.0
+offset_right = 367.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+
+[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel4"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 416.0
+offset_bottom = 95.0
+theme = ExtResource("4_w8ecj")
+text = "Негрилы"
+horizontal_alignment = 1
+
+[node name="TeamPanel5" type="Panel" parent="Buttons/Teams"]
+visible = false
+offset_left = 42.0
+offset_top = 1303.0
+offset_right = 528.0
+offset_bottom = 1605.0
+theme = ExtResource("4_w8ecj")
+
+[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel5"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel5"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 132.0
+offset_right = 367.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+
+[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel5"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 416.0
+offset_bottom = 95.0
+theme = ExtResource("4_w8ecj")
+text = "Негрилы"
+horizontal_alignment = 1
+
+[node name="TeamPanel6" type="Panel" parent="Buttons/Teams"]
+visible = false
+offset_left = 545.0
+offset_top = 1303.0
+offset_right = 1031.0
+offset_bottom = 1605.0
+theme = ExtResource("4_w8ecj")
+
+[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel6"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel6"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 132.0
+offset_right = 367.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+
+[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel6"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 416.0
+offset_bottom = 95.0
+theme = ExtResource("4_w8ecj")
+text = "Негрилы"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Buttons/Back" to="Buttons/Back" method="_on_pressed"]
-[connection signal="pressed" from="Buttons/AddTeam" to="Buttons/AddTeam" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/AddTeam" to="Buttons" method="_on_add_team_pressed"]
