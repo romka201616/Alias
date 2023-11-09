@@ -1,5 +1,7 @@
 extends Node2D
 
+var round : Round
+
 var teams_amount : int
 
 var teams : Array[Team] = []
@@ -36,6 +38,7 @@ var teams_names = [
 	"Лоси",
 	"Медведи",
 ]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

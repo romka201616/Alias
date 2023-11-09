@@ -1,11 +1,79 @@
-[gd_scene load_steps=10 format=3 uid="uid://55kqvo1rwxt5"]
+[gd_scene load_steps=11 format=3 uid="uid://55kqvo1rwxt5"]
 
 [ext_resource type="Texture2D" uid="uid://delrf4hca303q" path="res://Sprites/TeamSettingsSprite.png" id="1_lpu3r"]
-[ext_resource type="Script" path="res://Scripts/Buttons.gd" id="2_e22oj"]
+[ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_h1ryk"]
 [ext_resource type="Script" path="res://Scripts/Back.gd" id="2_rflib"]
 [ext_resource type="Texture2D" uid="uid://dfqk3en1ti7cq" path="res://Themes/UI3.png" id="3_8n8jg"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="4_w8ecj"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="6_1c21l"]
+
+[sub_resource type="GDScript" id="GDScript_i4qqr"]
+script/source = "extends Node2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+func position_buttons():
+	for i in range(1, 7):
+		get_node(\"Teams/TeamPanel\" + str(i)).hide()
+		
+	for i in range(1, Global.teams_amount+1):
+		get_node(\"Teams/TeamPanel\" + str(i) + \"/Delete\").connect(\"pressed\", remove_team.bind(Global.teams[i - 1]))
+		get_node(\"Teams/TeamPanel\" + str(i) + \"/Label\").text = Global.teams[i-1].team_name
+		get_node(\"Teams/TeamPanel\" + str(i)).show()
+		
+	match Global.teams_amount:
+		1:
+			get_node(\"AddTeam\").position = Vector2(545, 632)
+		2:
+			get_node(\"AddTeam\").position = Vector2(42, 966)
+		3:
+			get_node(\"AddTeam\").position = Vector2(545, 966)
+		4:
+			get_node(\"AddTeam\").position = Vector2(42, 1303)
+		5:
+			get_node(\"AddTeam\").position = Vector2(545, 1303)
+			get_node(\"AddTeam\").show()
+		6:
+			get_node(\"AddTeam\").hide()
+	
+func change_name(team : Team, teamIndex: int, i: int):
+	var line_edit = LineEdit.new()
+	line_edit.text = team.team_name
+	line_edit.rect_min_size =  get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Label\").text
+	line_edit.position =  get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Label\").position
+	get_node(\"Teams/TeamPanel\" + str(i)).add_child(line_edit)
+
+	position_buttons()
+
+func remove_team(team : Team, teamIndex: int):
+	Global.teams_names.push_back(team.team_name)
+	Global.teams_positions.pop_back()
+	Global.teams.remove_at(teamIndex)
+	team._exit_tree()
+	position_buttons()
+
+func _on_add_team_pressed():
+	Global.teams.push_back(Team.new())
+	print(Global.teams_amount)
+	get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Delete\").connect(\"pressed\", remove_team.bind(Global.teams[Global.teams_amount - 1], Global.teams_amount - 1))
+	get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Edit\").connect(\"pressed\", change_name.bind(Global.teams[Global.teams_amount - 1], Global.teams_amount - 1), Global.teams_amount)
+	get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Label\").text = Global.teams[Global.teams_amount - 1].team_name
+	get_node(\"Teams/TeamPanel\" + str(Global.teams_amount)).show()
+	Global.teams_positions.push_back(Global.teams_positions_examples[Global.teams_amount-1])
+	position_buttons()
+
+
+func _on_ok_pressed():
+	var next_scene = load(\"res://Scenes/game_settings.tscn\")
+	get_tree().change_scene_to_packed(next_scene)
+"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8kkn4"]
 texture = ExtResource("3_8n8jg")
@@ -29,15 +97,23 @@ offset_bottom = 2340.0
 color = Color(0.494118, 0.643137, 0.988235, 1)
 
 [node name="TeamSettingsSprite" type="Sprite2D" parent="Background"]
-visible = false
 position = Vector2(540, 1200)
 scale = Vector2(3, 3)
 texture = ExtResource("1_lpu3r")
 
 [node name="UI" type="Node2D" parent="."]
 
+[node name="Label" type="Label" parent="UI"]
+offset_left = 53.0
+offset_top = 445.0
+offset_right = 505.0
+offset_bottom = 586.0
+theme_override_fonts/font = ExtResource("2_h1ryk")
+theme_override_font_sizes/font_size = 100
+text = "Команды"
+
 [node name="Buttons" type="Node2D" parent="."]
-script = ExtResource("2_e22oj")
+script = SubResource("GDScript_i4qqr")
 
 [node name="Back" type="Button" parent="Buttons"]
 offset_left = 52.0
@@ -53,6 +129,14 @@ offset_top = 632.0
 offset_right = 529.0
 offset_bottom = 934.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_8kkn4")
+
+[node name="Ok" type="Button" parent="Buttons"]
+offset_left = 172.0
+offset_top = 1809.0
+offset_right = 903.0
+offset_bottom = 2063.0
+theme = ExtResource("4_w8ecj")
+text = "Далее"
 
 [node name="Teams" type="Node2D" parent="Buttons"]
 
@@ -267,3 +351,4 @@ horizontal_alignment = 1
 
 [connection signal="pressed" from="Buttons/Back" to="Buttons/Back" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/AddTeam" to="Buttons" method="_on_add_team_pressed"]
+[connection signal="pressed" from="Buttons/Ok" to="Buttons" method="_on_ok_pressed"]

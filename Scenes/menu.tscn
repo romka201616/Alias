@@ -67,9 +67,10 @@ offset_bottom = 2027.0
 text = "Помощь"
 
 [node name="TeamSettings" parent="." instance=ExtResource("3_rtv31")]
-position = Vector2(1375, 178)
+position = Vector2(1295, 23)
 
 [node name="GameSettings" parent="." instance=ExtResource("4_3xja1")]
+position = Vector2(2642, 22)
 
 [node name="Game" parent="." instance=ExtResource("3_tydg7")]
 

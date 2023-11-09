@@ -1,9 +1,123 @@
-[gd_scene format=3 uid="uid://lugej58dqox"]
+[gd_scene load_steps=7 format=3 uid="uid://lugej58dqox"]
+
+[ext_resource type="Texture2D" uid="uid://cc68necvqwipw" path="res://Sprites/game_settings.png" id="1_ixpb6"]
+[ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="2_tcs6a"]
+[ext_resource type="Script" path="res://Scripts/Buttons_Game_Settings.gd" id="2_ugi1t"]
+[ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="4_u15s8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vjyqq"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(3948, 668, 172, 172)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o4nbc"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1968, 5268, 424, 160)
 
 [node name="GameSettings" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1080.0
+offset_bottom = 2340.0
+color = Color(0.494118, 0.643137, 0.988235, 1)
+
+[node name="GameSettings" type="Sprite2D" parent="Background"]
+position = Vector2(540, 1200)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ixpb6")
+
 [node name="UI" type="Node2D" parent="."]
 
-[node name="Buttons" type="Node2D" parent="."]
+[node name="Buttons_Game_Settings" type="Node2D" parent="."]
+script = ExtResource("2_ugi1t")
+
+[node name="Back" type="Button" parent="Buttons_Game_Settings"]
+offset_left = 52.0
+offset_top = 158.0
+offset_right = 184.0
+offset_bottom = 290.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_vjyqq")
+
+[node name="Ok" type="Button" parent="Buttons_Game_Settings"]
+offset_left = 172.0
+offset_top = 1809.0
+offset_right = 903.0
+offset_bottom = 2063.0
+theme = ExtResource("4_u15s8")
+text = "Далее"
+
+[node name="Time" type="Node2D" parent="Buttons_Game_Settings"]
+position = Vector2(0, -345)
+
+[node name="Time30" type="Button" parent="Buttons_Game_Settings/Time"]
+offset_left = 48.0
+offset_top = 1032.0
+offset_right = 369.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[node name="Time60" type="Button" parent="Buttons_Game_Settings/Time"]
+offset_left = 380.0
+offset_top = 1032.0
+offset_right = 701.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[node name="Time90" type="Button" parent="Buttons_Game_Settings/Time"]
+offset_left = 711.0
+offset_top = 1032.0
+offset_right = 1032.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[node name="Score" type="Node2D" parent="Buttons_Game_Settings"]
+
+[node name="Score30" type="Button" parent="Buttons_Game_Settings/Score"]
+offset_left = 48.0
+offset_top = 1032.0
+offset_right = 369.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[node name="Score50" type="Button" parent="Buttons_Game_Settings/Score"]
+offset_left = 380.0
+offset_top = 1032.0
+offset_right = 701.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[node name="Score70" type="Button" parent="Buttons_Game_Settings/Score"]
+offset_left = 711.0
+offset_top = 1032.0
+offset_right = 1032.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[node name="Difficulty" type="Node2D" parent="Buttons_Game_Settings"]
+position = Vector2(0, 345)
+
+[node name="Low" type="Button" parent="Buttons_Game_Settings/Difficulty"]
+offset_left = 48.0
+offset_top = 1032.0
+offset_right = 369.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[node name="Medium" type="Button" parent="Buttons_Game_Settings/Difficulty"]
+offset_left = 380.0
+offset_top = 1032.0
+offset_right = 701.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[node name="Hard" type="Button" parent="Buttons_Game_Settings/Difficulty"]
+offset_left = 711.0
+offset_top = 1032.0
+offset_right = 1032.0
+offset_bottom = 1153.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+
+[connection signal="pressed" from="Buttons_Game_Settings/Back" to="Buttons_Game_Settings" method="_on_back_pressed"]
+[connection signal="pressed" from="Buttons_Game_Settings/Ok" to="Buttons_Game_Settings" method="_on_ok_pressed"]
+[connection signal="pressed" from="Buttons_Game_Settings/Time/Time30" to="Buttons_Game_Settings" method="_on_time_30_pressed"]

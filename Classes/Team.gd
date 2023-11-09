@@ -16,7 +16,7 @@ func _exit_tree():
 func add_team():
 	Global.teams_amount += 1
 	randomize() # Always call this function before using randi() or any other random function.
-	var team = Global.teams_names[randi() % Global.teams_names.size()]
-	Global.teams_names.erase(team)
+	var teamName = Global.teams_names[randi() % Global.teams_names.size()]
+	Global.teams_names.erase(teamName)
 	print(Global.teams_names)
-	return team
+	return teamName
