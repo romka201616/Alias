@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw6wuqbo0ub22"]
+
+[ext_resource type="Script" path="res://Scripts/Card.gd" id="1_n5ehq"]
+[ext_resource type="Texture2D" uid="uid://ccxdpp8jo6y2n" path="res://Sprites/Card.png" id="1_qk8me"]
+[ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_8h04c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sob13"]
+size = Vector2(80.6, 41.3667)
+
+[node name="Card" type="Node2D"]
+script = ExtResource("1_n5ehq")
+
+[node name="CardSprite" type="Sprite2D" parent="."]
+position = Vector2(-5.5, 3.5)
+texture = ExtResource("1_qk8me")
+
+[node name="Word" type="Label" parent="."]
+offset_left = -145.5
+offset_top = -115.5
+offset_right = 100.5
+offset_bottom = 25.5
+theme_override_colors/font_color = Color(0.0431373, 0.533333, 0.980392, 1)
+theme_override_fonts/font = ExtResource("2_8h04c")
+theme_override_font_sizes/font_size = 100
+text = "Кран"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+scale = Vector2(10, 30)
+shape = SubResource("RectangleShape2D_sob13")

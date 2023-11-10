@@ -73,6 +73,7 @@ position = Vector2(1295, 23)
 position = Vector2(2642, 22)
 
 [node name="Game" parent="." instance=ExtResource("3_tydg7")]
+position = Vector2(4417, 15)
 
 [node name="FinalScreen" parent="." instance=ExtResource("6_ht2kn")]
 

@@ -1,9 +1,36 @@
-[gd_scene format=3 uid="uid://c002brc1qh862"]
+[gd_scene load_steps=5 format=3 uid="uid://c002brc1qh862"]
+
+[ext_resource type="Texture2D" uid="uid://bb5mfswloqsfm" path="res://Sprites/Игровой экран.png" id="1_3fajm"]
+[ext_resource type="PackedScene" uid="uid://smce50lqq3a6" path="res://Scenes/left_wall.tscn" id="2_0y8vh"]
+[ext_resource type="PackedScene" uid="uid://bw6wuqbo0ub22" path="res://Scenes/card.tscn" id="2_8t36b"]
+[ext_resource type="PackedScene" uid="uid://ta1ka87jklbh" path="res://Scenes/right_wall.tscn" id="3_hfuxa"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1080.0
+offset_bottom = 2340.0
+color = Color(0.494118, 0.643137, 0.988235, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ИгровойЭкран" type="Sprite2D" parent="Background"]
+position = Vector2(540, 1200)
+scale = Vector2(1, 1)
+texture = ExtResource("1_3fajm")
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Buttons" type="Node2D" parent="."]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="LeftWall" parent="Walls" instance=ExtResource("2_0y8vh")]
+position = Vector2(-72, 1423)
+
+[node name="RightWall" parent="Walls" instance=ExtResource("3_hfuxa")]
+position = Vector2(1154, 1423)
+
+[node name="Card" parent="." instance=ExtResource("2_8t36b")]
+position = Vector2(540, 1456)

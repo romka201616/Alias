@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dci03lr6r0e62"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dci03lr6r0e62"]
 
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="1_ngug2"]
 [ext_resource type="Texture2D" uid="uid://bxebg30fwwycd" path="res://Themes/UI.png" id="1_s4q7v"]
@@ -37,8 +37,6 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oqxa7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b3tcd"]
 texture = ExtResource("1_s4q7v")
@@ -85,7 +83,7 @@ Button/font_sizes/font_size = 100
 Button/fonts/font = ExtResource("1_ngug2")
 Button/styles/disabled = SubResource("StyleBoxFlat_xw5dg")
 Button/styles/focus = SubResource("StyleBoxFlat_m48d5")
-Button/styles/hover = SubResource("StyleBoxTexture_oqxa7")
+Button/styles/hover = SubResource("StyleBoxFlat_m48d5")
 Button/styles/normal = SubResource("StyleBoxTexture_b3tcd")
 Button/styles/pressed = SubResource("StyleBoxFlat_00l6f")
 Label/colors/font_color = Color(0.0431373, 0.533333, 0.980392, 1)
