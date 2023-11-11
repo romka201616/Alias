@@ -19,8 +19,8 @@ func _on_back_pressed():
 	get_tree().change_scene_to_packed(next_scene)
 
 func _on_ok_pressed():
-	Global.round = Round.new(time, score, difficulty)
-	var next_scene = load("res://Scenes/game.tscn")
+	Global.round = Round.new(time, score, difficulty, Global.teams[0])
+	var next_scene = load("res://Scenes/next_team.tscn")
 	get_tree().change_scene_to_packed(next_scene)
 
 func _on_time_30_pressed():

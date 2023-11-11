@@ -11,7 +11,6 @@ size = Vector2(80.6, 41.3667)
 script = ExtResource("1_n5ehq")
 
 [node name="CardSprite" type="Sprite2D" parent="."]
-position = Vector2(-5.5, 3.5)
 texture = ExtResource("1_qk8me")
 
 [node name="Word" type="Label" parent="."]
@@ -30,3 +29,8 @@ text = "Кран"
 position = Vector2(0.5, 0)
 scale = Vector2(10, 30)
 shape = SubResource("RectangleShape2D_sob13")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

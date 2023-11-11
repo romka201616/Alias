@@ -4,23 +4,21 @@ var draggable = false
 var is_inside_dropable = false 
 var body_ref
 var offset: Vector2
-var initialPos : Vector2
+var default_pos : Vector2 = Vector2(540, 1456)
 
 func _process(_delta):
 	if draggable:
 		if Input.is_action_just_pressed("click"):
-			initialPos = global_position
 			offset = get_global_mouse_position() - global_position
 			Global.is_dragging = true
 		if Input.is_action_pressed("click"):
 			global_position = get_global_mouse_position() - offset
+			pass
 		elif Input.is_action_just_released("click"):
 			Global.is_dragging = false
 			var tween = get_tree().create_tween()
-			if is_inside_dropable:
-				tween.tween_property(self, "position", body_ref.position, 0.2).set_ease(Tween.EASE_OUT)
-			else:
-				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
+			if not is_inside_dropable:
+				global_position = default_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,14 +37,11 @@ func _on_area_2d_mouse_exited():
 
 func _on_area_2d_body_entered(body:StaticBody2D):
 	if body.is_in_group('dropable'):
-		print("jkgdhaskjg")
 		is_inside_dropable = true
 		body.modulate = Color(Color.REBECCA_PURPLE, 1)
 		body_ref = body
+		global_position = default_pos
 
 
 func _on_area_2d_body_exited(body):
-	if body.is_in_group('dropable'):
-		print("JCDSHBLJFS")
-		is_inside_dropable = false
-		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
+	is_inside_dropable = false

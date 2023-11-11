@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://di6jd0trl202l"]
+[gd_scene load_steps=12 format=3 uid="uid://di6jd0trl202l"]
 
 [ext_resource type="Texture2D" uid="uid://7iaefn4i708d" path="res://Sprites/MenuSprite.png" id="1_uec1c"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="2_48msq"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c002brc1qh862" path="res://Scenes/game.tscn" id="3_tydg7"]
 [ext_resource type="PackedScene" uid="uid://lugej58dqox" path="res://Scenes/game_settings.tscn" id="4_3xja1"]
 [ext_resource type="PackedScene" uid="uid://cl43vt1pb4dcl" path="res://Scenes/final_screen.tscn" id="6_ht2kn"]
+[ext_resource type="PackedScene" uid="uid://djwjojf1b4ded" path="res://Scenes/next_team.tscn" id="8_exenx"]
 
 [node name="Alias" type="Node2D"]
 
@@ -72,8 +73,11 @@ position = Vector2(1295, 23)
 [node name="GameSettings" parent="." instance=ExtResource("4_3xja1")]
 position = Vector2(2642, 22)
 
+[node name="NextTeam" parent="." instance=ExtResource("8_exenx")]
+position = Vector2(4064, 13)
+
 [node name="Game" parent="." instance=ExtResource("3_tydg7")]
-position = Vector2(4417, 15)
+position = Vector2(1317, 2552)
 
 [node name="FinalScreen" parent="." instance=ExtResource("6_ht2kn")]
 

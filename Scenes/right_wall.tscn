@@ -7,6 +7,6 @@
 [node name="RightWall" type="StaticBody2D" groups=["dropable"]]
 script = ExtResource("1_dcugk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(10, 100)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["accept", "dropable"]]
+scale = Vector2(50, 100)
 shape = SubResource("RectangleShape2D_3bgyb")

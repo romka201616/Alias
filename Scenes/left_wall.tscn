@@ -4,9 +4,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bgyb"]
 
-[node name="LeftWall" type="StaticBody2D" groups=["dropable"]]
+[node name="LeftWall" type="StaticBody2D" groups=["dropable", "pass"]]
 script = ExtResource("1_vhxog")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(10, 100)
+scale = Vector2(50, 100)
 shape = SubResource("RectangleShape2D_3bgyb")
