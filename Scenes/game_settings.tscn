@@ -1,17 +1,86 @@
-[gd_scene load_steps=7 format=3 uid="uid://lugej58dqox"]
+[gd_scene load_steps=25 format=3 uid="uid://lugej58dqox"]
 
 [ext_resource type="Texture2D" uid="uid://cc68necvqwipw" path="res://Sprites/game_settings.png" id="1_ixpb6"]
+[ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_3s6wv"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="2_tcs6a"]
 [ext_resource type="Script" path="res://Scripts/Buttons_Game_Settings.gd" id="2_ugi1t"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="4_u15s8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g3dk7"]
+font = ExtResource("2_3s6wv")
+font_size = 100
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vjyqq"]
 texture = ExtResource("2_tcs6a")
 region_rect = Rect2(3948, 668, 172, 172)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5hfq3"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(3948, 668, 172, 172)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o4nbc"]
 texture = ExtResource("2_tcs6a")
-region_rect = Rect2(1968, 5268, 424, 160)
+region_rect = Rect2(1516, 4172, 424, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2m40"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1516, 3964, 424, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0dkgu"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1956, 3964, 428, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_atq8b"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1956, 4172, 428, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fbnlg"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(2400, 3964, 424, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgxlu"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(2400, 4380, 424, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acwoc"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1960, 4852, 424, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_03yqs"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1964, 5060, 424, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jyllu"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(2400, 4852, 428, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o2l77"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(2408, 5268, 428, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l38p5"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1512, 5948, 428, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8llue"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1512, 5740, 428, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kmknt"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1956, 5740, 424, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a5lu7"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(1956, 5948, 424, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6jxcw"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(2396, 5740, 428, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_30n8f"]
+texture = ExtResource("2_tcs6a")
+region_rect = Rect2(2404, 6156, 428, 160)
 
 [node name="GameSettings" type="Node2D"]
 
@@ -30,6 +99,30 @@ texture = ExtResource("1_ixpb6")
 
 [node name="UI" type="Node2D" parent="."]
 
+[node name="TimeLabel" type="Label" parent="UI"]
+offset_left = 52.0
+offset_top = 534.0
+offset_right = 740.0
+offset_bottom = 675.0
+text = "Время раунда"
+label_settings = SubResource("LabelSettings_g3dk7")
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_left = 48.0
+offset_top = 876.0
+offset_right = 883.0
+offset_bottom = 1017.0
+text = "Счёт для победы"
+label_settings = SubResource("LabelSettings_g3dk7")
+
+[node name="DifficultyLabel" type="Label" parent="UI"]
+offset_left = 55.0
+offset_top = 1221.0
+offset_right = 890.0
+offset_bottom = 1362.0
+text = "Сложность слов"
+label_settings = SubResource("LabelSettings_g3dk7")
+
 [node name="Buttons_Game_Settings" type="Node2D" parent="."]
 script = ExtResource("2_ugi1t")
 
@@ -39,6 +132,10 @@ offset_top = 158.0
 offset_right = 184.0
 offset_bottom = 290.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_vjyqq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5hfq3")
 
 [node name="Ok" type="Button" parent="Buttons_Game_Settings"]
 offset_left = 172.0
@@ -53,24 +150,37 @@ position = Vector2(0, -345)
 
 [node name="Time30" type="Button" parent="Buttons_Game_Settings/Time"]
 offset_left = 48.0
-offset_top = 1032.0
+offset_top = 1030.0
 offset_right = 369.0
-offset_bottom = 1153.0
+offset_bottom = 1151.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x2m40")
+theme_override_styles/focus = SubResource("StyleBoxTexture_x2m40")
+disabled = true
 
 [node name="Time60" type="Button" parent="Buttons_Game_Settings/Time"]
 offset_left = 380.0
-offset_top = 1032.0
+offset_top = 1030.0
 offset_right = 701.0
-offset_bottom = 1153.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+offset_bottom = 1151.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_0dkgu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0dkgu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0dkgu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_atq8b")
+theme_override_styles/focus = SubResource("StyleBoxTexture_atq8b")
 
 [node name="Time90" type="Button" parent="Buttons_Game_Settings/Time"]
 offset_left = 711.0
-offset_top = 1032.0
+offset_top = 1030.0
 offset_right = 1032.0
-offset_bottom = 1153.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+offset_bottom = 1151.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fbnlg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fbnlg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fbnlg")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_rgxlu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rgxlu")
 
 [node name="Score" type="Node2D" parent="Buttons_Game_Settings"]
 
@@ -80,20 +190,33 @@ offset_top = 1032.0
 offset_right = 369.0
 offset_bottom = 1153.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x2m40")
+theme_override_styles/focus = SubResource("StyleBoxTexture_x2m40")
+disabled = true
 
 [node name="Score50" type="Button" parent="Buttons_Game_Settings/Score"]
 offset_left = 380.0
 offset_top = 1032.0
 offset_right = 701.0
 offset_bottom = 1153.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_acwoc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_acwoc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_acwoc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_03yqs")
+theme_override_styles/focus = SubResource("StyleBoxTexture_03yqs")
 
 [node name="Score70" type="Button" parent="Buttons_Game_Settings/Score"]
 offset_left = 711.0
 offset_top = 1032.0
 offset_right = 1032.0
 offset_bottom = 1153.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jyllu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jyllu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jyllu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_o2l77")
+theme_override_styles/focus = SubResource("StyleBoxTexture_o2l77")
 
 [node name="Difficulty" type="Node2D" parent="Buttons_Game_Settings"]
 position = Vector2(0, 345)
@@ -103,21 +226,34 @@ offset_left = 48.0
 offset_top = 1032.0
 offset_right = 369.0
 offset_bottom = 1153.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_l38p5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l38p5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l38p5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_8llue")
+theme_override_styles/focus = SubResource("StyleBoxTexture_8llue")
+disabled = true
 
 [node name="Medium" type="Button" parent="Buttons_Game_Settings/Difficulty"]
 offset_left = 380.0
 offset_top = 1032.0
 offset_right = 701.0
 offset_bottom = 1153.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kmknt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kmknt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kmknt")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_a5lu7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_a5lu7")
 
 [node name="Hard" type="Button" parent="Buttons_Game_Settings/Difficulty"]
 offset_left = 711.0
 offset_top = 1032.0
 offset_right = 1032.0
 offset_bottom = 1153.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_o4nbc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6jxcw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6jxcw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6jxcw")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_30n8f")
+theme_override_styles/focus = SubResource("StyleBoxTexture_30n8f")
 
 [connection signal="pressed" from="Buttons_Game_Settings/Back" to="Buttons_Game_Settings" method="_on_back_pressed"]
 [connection signal="pressed" from="Buttons_Game_Settings/Ok" to="Buttons_Game_Settings" method="_on_ok_pressed"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://di6jd0trl202l"]
+[gd_scene load_steps=15 format=3 uid="uid://di6jd0trl202l"]
 
-[ext_resource type="Texture2D" uid="uid://7iaefn4i708d" path="res://Sprites/MenuSprite.png" id="1_uec1c"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="2_48msq"]
+[ext_resource type="Texture2D" uid="uid://kdi8kgpj847b" path="res://Sprites/Главное меню фон.png" id="2_fowkf"]
 [ext_resource type="Script" path="res://Scripts/Exit.gd" id="2_h7mey"]
 [ext_resource type="Script" path="res://Scripts/Global.gd" id="3_5xgv7"]
 [ext_resource type="Script" path="res://Scripts/NewGame.gd" id="3_gckd6"]
@@ -9,8 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://55kqvo1rwxt5" path="res://Scenes/team_settings.tscn" id="3_rtv31"]
 [ext_resource type="PackedScene" uid="uid://c002brc1qh862" path="res://Scenes/game.tscn" id="3_tydg7"]
 [ext_resource type="PackedScene" uid="uid://lugej58dqox" path="res://Scenes/game_settings.tscn" id="4_3xja1"]
+[ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="5_6jpe4"]
 [ext_resource type="PackedScene" uid="uid://cl43vt1pb4dcl" path="res://Scenes/final_screen.tscn" id="6_ht2kn"]
 [ext_resource type="PackedScene" uid="uid://djwjojf1b4ded" path="res://Scenes/next_team.tscn" id="8_exenx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avy46"]
+texture = ExtResource("5_6jpe4")
+region_rect = Rect2(3464, 996, 280, 280)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sebsm"]
+texture = ExtResource("5_6jpe4")
+region_rect = Rect2(3464, 648, 280, 280)
 
 [node name="Alias" type="Node2D"]
 
@@ -23,10 +32,9 @@ offset_right = 1080.0
 offset_bottom = 2340.0
 color = Color(0.0431373, 0.533333, 0.980392, 1)
 
-[node name="AndroidLarge-5" type="Sprite2D" parent="Menu/Background"]
+[node name="ГлавноеМенюФон" type="Sprite2D" parent="Menu/Background"]
 position = Vector2(540, 1200)
-scale = Vector2(3, 3)
-texture = ExtResource("1_uec1c")
+texture = ExtResource("2_fowkf")
 
 [node name="UI" type="Node2D" parent="Menu"]
 
@@ -57,7 +65,11 @@ offset_left = 689.0
 offset_top = 1807.0
 offset_right = 908.0
 offset_bottom = 2026.0
-text = "Выйти"
+theme_override_styles/normal = SubResource("StyleBoxTexture_avy46")
+theme_override_styles/hover = SubResource("StyleBoxTexture_avy46")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_avy46")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_avy46")
+theme_override_styles/focus = SubResource("StyleBoxTexture_avy46")
 script = ExtResource("2_h7mey")
 
 [node name="Help" type="Button" parent="Menu/Buttons"]
@@ -65,7 +77,11 @@ offset_left = 172.0
 offset_top = 1808.0
 offset_right = 391.0
 offset_bottom = 2027.0
-text = "Помощь"
+theme_override_styles/normal = SubResource("StyleBoxTexture_sebsm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sebsm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sebsm")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_sebsm")
+theme_override_styles/focus = SubResource("StyleBoxTexture_sebsm")
 
 [node name="TeamSettings" parent="." instance=ExtResource("3_rtv31")]
 position = Vector2(1295, 23)

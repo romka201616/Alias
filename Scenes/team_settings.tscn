@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://delrf4hca303q" path="res://Sprites/TeamSettingsSprite.png" id="1_lpu3r"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_h1ryk"]
-[ext_resource type="Script" path="res://Scripts/Back.gd" id="2_rflib"]
 [ext_resource type="Texture2D" uid="uid://dfqk3en1ti7cq" path="res://Themes/UI3.png" id="3_8n8jg"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="4_w8ecj"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="6_1c21l"]
@@ -29,10 +28,14 @@ func position_buttons():
 		get_node(\"Teams/TeamPanel\" + str(i)).show()
 		
 	match Global.teams_amount:
+		0:
+			get_node(\"AddTeam\").position = Vector2(42, 632)
 		1:
 			get_node(\"AddTeam\").position = Vector2(545, 632)
+			get_node(\"Ok\").hide()
 		2:
 			get_node(\"AddTeam\").position = Vector2(42, 966)
+			get_node(\"Ok\").show()
 		3:
 			get_node(\"AddTeam\").position = Vector2(545, 966)
 		4:
@@ -73,7 +76,16 @@ func _on_add_team_pressed():
 func _on_ok_pressed():
 	var next_scene = load(\"res://Scenes/game_settings.tscn\")
 	get_tree().change_scene_to_packed(next_scene)
+
+
+func _on_back_pressed():
+	var next_scene = load(\"res://Scenes/menu.tscn\")
+	get_tree().change_scene_to_packed(next_scene)
 "
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5hfq3"]
+texture = ExtResource("6_1c21l")
+region_rect = Rect2(3948, 668, 172, 172)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8kkn4"]
 texture = ExtResource("3_8n8jg")
@@ -118,11 +130,14 @@ script = SubResource("GDScript_i4qqr")
 
 [node name="Back" type="Button" parent="Buttons"]
 offset_left = 52.0
-offset_top = 157.0
+offset_top = 158.0
 offset_right = 184.0
-offset_bottom = 289.0
-text = "Выйти"
-script = ExtResource("2_rflib")
+offset_bottom = 290.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5hfq3")
 
 [node name="AddTeam" type="Button" parent="Buttons"]
 offset_left = 43.0
@@ -130,8 +145,13 @@ offset_top = 632.0
 offset_right = 529.0
 offset_bottom = 934.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_8kkn4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8kkn4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8kkn4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_8kkn4")
+theme_override_styles/focus = SubResource("StyleBoxTexture_8kkn4")
 
 [node name="Ok" type="Button" parent="Buttons"]
+visible = false
 offset_left = 172.0
 offset_top = 1809.0
 offset_right = 903.0
@@ -156,6 +176,10 @@ offset_top = 132.0
 offset_right = 225.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
 
 [node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel1"]
 layout_mode = 0
@@ -164,6 +188,10 @@ offset_top = 132.0
 offset_right = 367.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
 
 [node name="Label" type="Label" parent="Buttons/Teams/TeamPanel1"]
 layout_mode = 0
@@ -190,6 +218,10 @@ offset_top = 132.0
 offset_right = 225.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
 metadata/_edit_use_anchors_ = true
 
 [node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel2"]
@@ -199,6 +231,10 @@ offset_top = 132.0
 offset_right = 367.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
 
 [node name="Label" type="Label" parent="Buttons/Teams/TeamPanel2"]
 layout_mode = 0
@@ -225,6 +261,10 @@ offset_top = 132.0
 offset_right = 225.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
 metadata/_edit_use_anchors_ = true
 
 [node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel3"]
@@ -234,6 +274,10 @@ offset_top = 132.0
 offset_right = 367.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
 
 [node name="Label" type="Label" parent="Buttons/Teams/TeamPanel3"]
 layout_mode = 0
@@ -260,6 +304,10 @@ offset_top = 132.0
 offset_right = 225.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
 metadata/_edit_use_anchors_ = true
 
 [node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel4"]
@@ -269,6 +317,10 @@ offset_top = 132.0
 offset_right = 367.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
 
 [node name="Label" type="Label" parent="Buttons/Teams/TeamPanel4"]
 layout_mode = 0
@@ -295,6 +347,10 @@ offset_top = 132.0
 offset_right = 225.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
 metadata/_edit_use_anchors_ = true
 
 [node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel5"]
@@ -304,6 +360,10 @@ offset_top = 132.0
 offset_right = 367.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
 
 [node name="Label" type="Label" parent="Buttons/Teams/TeamPanel5"]
 layout_mode = 0
@@ -330,6 +390,10 @@ offset_top = 132.0
 offset_right = 225.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
 metadata/_edit_use_anchors_ = true
 
 [node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel6"]
@@ -339,6 +403,10 @@ offset_top = 132.0
 offset_right = 367.0
 offset_bottom = 239.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
 
 [node name="Label" type="Label" parent="Buttons/Teams/TeamPanel6"]
 layout_mode = 0
@@ -350,6 +418,6 @@ theme = ExtResource("4_w8ecj")
 text = "Негрилы"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Buttons/Back" to="Buttons/Back" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Back" to="Buttons" method="_on_back_pressed"]
 [connection signal="pressed" from="Buttons/AddTeam" to="Buttons" method="_on_add_team_pressed"]
 [connection signal="pressed" from="Buttons/Ok" to="Buttons" method="_on_ok_pressed"]

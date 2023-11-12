@@ -32,7 +32,7 @@ func position_buttons():
 			get_node("AddTeam").show()
 		6:
 			get_node("AddTeam").hide()
-	
+			
 func change_name(team : Team, teamIndex: int, i: int):
 	var line_edit = LineEdit.new()
 	line_edit.text = team.team_name

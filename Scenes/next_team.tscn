@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djwjojf1b4ded"]
+[gd_scene load_steps=16 format=3 uid="uid://djwjojf1b4ded"]
 
 [ext_resource type="Texture2D" uid="uid://duumorewdbkvo" path="res://Sprites/Таблица команд.png" id="1_mxa68"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_6ixsw"]
@@ -34,6 +34,10 @@ font = ExtResource("2_6ixsw")
 font_size = 70
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_khevx"]
+texture = ExtResource("3_luauc")
+region_rect = Rect2(3948, 668, 172, 172)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5hfq3"]
 texture = ExtResource("3_luauc")
 region_rect = Rect2(3948, 668, 172, 172)
 
@@ -89,6 +93,7 @@ text = "Вагнеры"
 label_settings = SubResource("LabelSettings_1fmdl")
 
 [node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team1"]
+layout_mode = 0
 offset_left = 669.0
 offset_top = 23.0
 offset_right = 795.0
@@ -112,6 +117,7 @@ text = "Вагнеры"
 label_settings = SubResource("LabelSettings_csq6r")
 
 [node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team2"]
+layout_mode = 0
 offset_left = 669.0
 offset_top = 23.0
 offset_right = 795.0
@@ -135,6 +141,7 @@ text = "Вагнеры"
 label_settings = SubResource("LabelSettings_csq6r")
 
 [node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team3"]
+layout_mode = 0
 offset_left = 669.0
 offset_top = 23.0
 offset_right = 795.0
@@ -158,6 +165,7 @@ text = "Вагнеры"
 label_settings = SubResource("LabelSettings_csq6r")
 
 [node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team4"]
+layout_mode = 0
 offset_left = 669.0
 offset_top = 23.0
 offset_right = 795.0
@@ -181,6 +189,7 @@ text = "Вагнеры"
 label_settings = SubResource("LabelSettings_csq6r")
 
 [node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team5"]
+layout_mode = 0
 offset_left = 669.0
 offset_top = 23.0
 offset_right = 795.0
@@ -204,6 +213,7 @@ text = "Вагнеры"
 label_settings = SubResource("LabelSettings_csq6r")
 
 [node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team6"]
+layout_mode = 0
 offset_left = 669.0
 offset_top = 23.0
 offset_right = 795.0
@@ -221,6 +231,10 @@ offset_top = 158.0
 offset_right = 184.0
 offset_bottom = 290.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_khevx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5hfq3")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5hfq3")
 
 [node name="Ok" type="Button" parent="NextTeamButtons"]
 offset_left = 172.0
