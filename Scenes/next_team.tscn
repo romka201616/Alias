@@ -1,9 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://djwjojf1b4ded"]
+[gd_scene load_steps=15 format=3 uid="uid://djwjojf1b4ded"]
 
 [ext_resource type="Texture2D" uid="uid://duumorewdbkvo" path="res://Sprites/Таблица команд.png" id="1_mxa68"]
+[ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_6ixsw"]
+[ext_resource type="Texture2D" uid="uid://bkodpgn6jnnvy" path="res://Sprites/TeamShowRectangle.png" id="2_8lpl8"]
 [ext_resource type="Script" path="res://Scripts/NextTeamButtons.gd" id="2_38ytc"]
+[ext_resource type="Script" path="res://Scripts/NextTeamUI.gd" id="3_48jd0"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="3_luauc"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="4_vwafi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dpweu"]
+font = ExtResource("2_6ixsw")
+font_size = 100
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_whkfe"]
+texture = ExtResource("3_luauc")
+region_rect = Rect2(2480, 7796, 1140, 196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fmdl"]
+font = ExtResource("2_6ixsw")
+font_size = 70
+font_color = Color(0.0431373, 0.533333, 0.980392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb4nx"]
+texture = ExtResource("3_luauc")
+region_rect = Rect2(2480, 8088, 1140, 196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_csq6r"]
+font = ExtResource("2_6ixsw")
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_i6jfn"]
+font = ExtResource("2_6ixsw")
+font_size = 70
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_khevx"]
 texture = ExtResource("3_luauc")
@@ -16,13 +44,173 @@ region_rect = Rect2(3948, 668, 172, 172)
 [node name="ColorRect" type="ColorRect" parent="Background"]
 offset_right = 1080.0
 offset_bottom = 2340.0
-color = Color(0.494118, 0.643137, 0.988235, 1)
+color = Color(0.0431373, 0.533333, 0.980392, 1)
 
 [node name="ТаблицаКоманд" type="Sprite2D" parent="Background"]
+visible = false
 position = Vector2(540, 1204)
 texture = ExtResource("1_mxa68")
 
-[node name="UI" type="Node2D" parent="."]
+[node name="TeamShowRectangle" type="Sprite2D" parent="Background"]
+position = Vector2(540, 1146)
+texture = ExtResource("2_8lpl8")
+
+[node name="NextTeamUI" type="Node2D" parent="."]
+script = ExtResource("3_48jd0")
+
+[node name="NextTurn" type="Label" parent="NextTeamUI"]
+offset_left = 211.0
+offset_top = 344.0
+offset_right = 877.0
+offset_bottom = 485.0
+text = "Ход: Вагнеры"
+label_settings = SubResource("LabelSettings_dpweu")
+horizontal_alignment = 1
+
+[node name="TeamShowContainer" type="VBoxContainer" parent="NextTeamUI"]
+offset_left = 112.0
+offset_top = 595.0
+offset_right = 971.0
+offset_bottom = 1712.0
+theme_override_constants/separation = 50
+
+[node name="Team1" type="Panel" parent="NextTeamUI/TeamShowContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_whkfe")
+
+[node name="Name" type="Label" parent="NextTeamUI/TeamShowContainer/Team1"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 678.0
+offset_bottom = 137.0
+text = "Вагнеры"
+label_settings = SubResource("LabelSettings_1fmdl")
+
+[node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team1"]
+offset_left = 669.0
+offset_top = 23.0
+offset_right = 795.0
+offset_bottom = 136.0
+text = "23"
+label_settings = SubResource("LabelSettings_1fmdl")
+horizontal_alignment = 1
+
+[node name="Team2" type="Panel" parent="NextTeamUI/TeamShowContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eb4nx")
+
+[node name="Name" type="Label" parent="NextTeamUI/TeamShowContainer/Team2"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 678.0
+offset_bottom = 137.0
+text = "Вагнеры"
+label_settings = SubResource("LabelSettings_csq6r")
+
+[node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team2"]
+offset_left = 669.0
+offset_top = 23.0
+offset_right = 795.0
+offset_bottom = 136.0
+text = "23"
+label_settings = SubResource("LabelSettings_i6jfn")
+horizontal_alignment = 1
+
+[node name="Team3" type="Panel" parent="NextTeamUI/TeamShowContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eb4nx")
+
+[node name="Name" type="Label" parent="NextTeamUI/TeamShowContainer/Team3"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 678.0
+offset_bottom = 137.0
+text = "Вагнеры"
+label_settings = SubResource("LabelSettings_csq6r")
+
+[node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team3"]
+offset_left = 669.0
+offset_top = 23.0
+offset_right = 795.0
+offset_bottom = 136.0
+text = "23"
+label_settings = SubResource("LabelSettings_i6jfn")
+horizontal_alignment = 1
+
+[node name="Team4" type="Panel" parent="NextTeamUI/TeamShowContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eb4nx")
+
+[node name="Name" type="Label" parent="NextTeamUI/TeamShowContainer/Team4"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 678.0
+offset_bottom = 137.0
+text = "Вагнеры"
+label_settings = SubResource("LabelSettings_csq6r")
+
+[node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team4"]
+offset_left = 669.0
+offset_top = 23.0
+offset_right = 795.0
+offset_bottom = 136.0
+text = "23"
+label_settings = SubResource("LabelSettings_i6jfn")
+horizontal_alignment = 1
+
+[node name="Team5" type="Panel" parent="NextTeamUI/TeamShowContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eb4nx")
+
+[node name="Name" type="Label" parent="NextTeamUI/TeamShowContainer/Team5"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 678.0
+offset_bottom = 137.0
+text = "Вагнеры"
+label_settings = SubResource("LabelSettings_csq6r")
+
+[node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team5"]
+offset_left = 669.0
+offset_top = 23.0
+offset_right = 795.0
+offset_bottom = 136.0
+text = "23"
+label_settings = SubResource("LabelSettings_i6jfn")
+horizontal_alignment = 1
+
+[node name="Team6" type="Panel" parent="NextTeamUI/TeamShowContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eb4nx")
+
+[node name="Name" type="Label" parent="NextTeamUI/TeamShowContainer/Team6"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 678.0
+offset_bottom = 137.0
+text = "Вагнеры"
+label_settings = SubResource("LabelSettings_csq6r")
+
+[node name="Score" type="Label" parent="NextTeamUI/TeamShowContainer/Team6"]
+offset_left = 669.0
+offset_top = 23.0
+offset_right = 795.0
+offset_bottom = 136.0
+text = "23"
+label_settings = SubResource("LabelSettings_i6jfn")
+horizontal_alignment = 1
 
 [node name="NextTeamButtons" type="Node2D" parent="."]
 script = ExtResource("2_38ytc")

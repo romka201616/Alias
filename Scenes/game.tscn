@@ -42,7 +42,7 @@ label_settings = SubResource("LabelSettings_jhro6")
 [node name="LeftWall" parent="Walls" instance=ExtResource("2_0y8vh")]
 position = Vector2(-494, 1397)
 
-[node name="RightWall" parent="Walls" instance=ExtResource("3_hfuxa")]
+[node name="RightWall" parent="Walls" groups=["accept"] instance=ExtResource("3_hfuxa")]
 position = Vector2(1586, 1401)
 
 [node name="Card" parent="." instance=ExtResource("2_8t36b")]

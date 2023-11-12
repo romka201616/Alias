@@ -2,7 +2,6 @@ extends Node2D
 
 var draggable = false
 var is_inside_dropable = false 
-var body_ref
 var offset: Vector2
 var default_pos : Vector2 = Vector2(540, 1456)
 
@@ -38,9 +37,11 @@ func _on_area_2d_mouse_exited():
 func _on_area_2d_body_entered(body:StaticBody2D):
 	if body.is_in_group('dropable'):
 		is_inside_dropable = true
-		body.modulate = Color(Color.REBECCA_PURPLE, 1)
-		body_ref = body
 		global_position = default_pos
+		if body.is_in_group("accept"):
+			pass
+		else:
+			pass
 
 
 func _on_area_2d_body_exited(body):

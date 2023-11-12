@@ -1,15 +1,14 @@
 extends Node2D
 
-var is_dragging = false
+var next_team_ready_count : int
+
+var is_dragging : bool = false
 
 var round : Round
 
-var teams_amount : int
-
 var teams : Array[Team] = []
-
+var teams_amount : int
 var teams_positions = []
-
 var teams_positions_examples = [
 	[42, 632],
 	[545, 632],
@@ -18,7 +17,6 @@ var teams_positions_examples = [
 	[42, 1303],
 	[545, 1303]
 ]
-
 var teams_example = [
 	"Орлы",
 	"Коты",
@@ -29,7 +27,6 @@ var teams_example = [
 	"Лоси",
 	"Медведи",
 ]
-
 var teams_names = [
 	"Орлы",
 	"Коты",
@@ -41,10 +38,10 @@ var teams_names = [
 	"Медведи",
 ]
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	teams_amount = 0
+	next_team_ready_count = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
