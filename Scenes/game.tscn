@@ -1,16 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://c002brc1qh862"]
+[gd_scene load_steps=11 format=3 uid="uid://c002brc1qh862"]
 
 [ext_resource type="Texture2D" uid="uid://bb5mfswloqsfm" path="res://Sprites/Игровой экран.png" id="1_3fajm"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_tadni"]
 [ext_resource type="PackedScene" uid="uid://smce50lqq3a6" path="res://Scenes/left_wall.tscn" id="2_0y8vh"]
 [ext_resource type="PackedScene" uid="uid://bw6wuqbo0ub22" path="res://Scenes/card.tscn" id="2_8t36b"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_xjndt"]
 [ext_resource type="PackedScene" uid="uid://ta1ka87jklbh" path="res://Scenes/right_wall.tscn" id="3_hfuxa"]
+[ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="4_qjaxr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jhro6"]
 font = ExtResource("2_xjndt")
 font_size = 200
 
+[sub_resource type="LabelSettings" id="LabelSettings_plp7d"]
+font = ExtResource("2_xjndt")
+font_size = 130
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_himl6"]
+texture = ExtResource("4_qjaxr")
+region_rect = Rect2(3948, 928, 172, 172)
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_tadni")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -21,29 +32,57 @@ color = Color(0.494118, 0.643137, 0.988235, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ИгровойЭкран" type="Sprite2D" parent="Background"]
+visible = false
 position = Vector2(540, 1200)
 texture = ExtResource("1_3fajm")
 
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Score" type="Label" parent="UI"]
-offset_left = 486.0
+offset_left = 6.0
 offset_top = 450.0
-offset_right = 606.0
+offset_right = 1080.0
 offset_bottom = 727.0
-text = "
-"
+text = "0"
 label_settings = SubResource("LabelSettings_jhro6")
+horizontal_alignment = 1
+
+[node name="TimeShow" type="Label" parent="UI"]
+offset_left = 743.0
+offset_top = 158.0
+offset_right = 1066.0
+offset_bottom = 339.0
+text = "0"
+label_settings = SubResource("LabelSettings_plp7d")
+horizontal_alignment = 1
 
 [node name="Buttons" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="Buttons"]
+offset_left = 48.0
+offset_top = 164.0
+offset_right = 179.0
+offset_bottom = 295.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_himl6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_himl6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_himl6")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_himl6")
+theme_override_styles/focus = SubResource("StyleBoxTexture_himl6")
 
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="LeftWall" parent="Walls" instance=ExtResource("2_0y8vh")]
 position = Vector2(-494, 1397)
+script = null
 
 [node name="RightWall" parent="Walls" groups=["accept"] instance=ExtResource("3_hfuxa")]
 position = Vector2(1586, 1401)
+script = null
 
 [node name="Card" parent="." instance=ExtResource("2_8t36b")]
 position = Vector2(540, 1456)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="Card" method="_on_timer_timeout"]

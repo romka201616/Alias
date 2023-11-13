@@ -2,6 +2,8 @@ extends Node2D
 
 var next_team_ready_count : int
 
+var game_ready_count : int
+
 var is_dragging : bool = false
 
 var round : Round
@@ -42,6 +44,7 @@ var teams_names = [
 func _ready():
 	teams_amount = 0
 	next_team_ready_count = 0
+	game_ready_count = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

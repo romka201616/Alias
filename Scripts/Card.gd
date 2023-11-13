@@ -1,9 +1,11 @@
 extends Node2D
 
 var draggable = false
-var is_inside_dropable = false 
+var is_inside_dropable = false
+var is_inside_accept = false
 var offset: Vector2
-var default_pos : Vector2 = Vector2(540, 1456)
+var default_pos  = Vector2(540, 1456)
+var word_manager = preload("res://Resources/Words.gd").new()
 
 func _process(_delta):
 	if draggable:
@@ -12,16 +14,23 @@ func _process(_delta):
 			Global.is_dragging = true
 		if Input.is_action_pressed("click"):
 			global_position = get_global_mouse_position() - offset
-			pass
 		elif Input.is_action_just_released("click"):
+			if is_inside_dropable:
+				get_node("Word").text = word_manager.get_word(Global.round.difficulty)
+				if is_inside_accept:
+					get_parent().tmp_score += 1
+					get_parent().get_node("UI/Score").text = str(get_parent().tmp_score)
 			Global.is_dragging = false
-			var tween = get_tree().create_tween()
-			if not is_inside_dropable:
-				global_position = default_pos
+			global_position = default_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if Global.game_ready_count == 1:
+		word_manager = load("res://Resources/Words.gd").new()
+		word_manager.load_words()
+		get_node("Word").text = word_manager.get_word(Global.round.difficulty)
+		get_parent().get_node("Timer").wait_time = Global.round.time
+		get_parent().get_node("Timer").start()
 
 func _on_area_2d_mouse_entered():
 	if not Global.is_dragging:
@@ -37,12 +46,18 @@ func _on_area_2d_mouse_exited():
 func _on_area_2d_body_entered(body:StaticBody2D):
 	if body.is_in_group('dropable'):
 		is_inside_dropable = true
-		global_position = default_pos
 		if body.is_in_group("accept"):
-			pass
+			is_inside_accept = true
 		else:
 			pass
 
 
 func _on_area_2d_body_exited(body):
-	is_inside_dropable = false
+	if body.is_in_group('dropable'):
+		is_inside_dropable = false
+		if body.is_in_group("accept"):
+			is_inside_accept = false
+
+
+func _on_timer_timeout():
+	get_parent().get_node("UI/TimeShow").text = get_parent().get_node("Timer").time_left

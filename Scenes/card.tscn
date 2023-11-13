@@ -14,14 +14,15 @@ script = ExtResource("1_n5ehq")
 texture = ExtResource("1_qk8me")
 
 [node name="Word" type="Label" parent="."]
-offset_left = -145.5
-offset_top = -115.5
-offset_right = 100.5
-offset_bottom = 25.5
+offset_left = -400.0
+offset_top = -115.0
+offset_right = 398.0
+offset_bottom = 26.0
 theme_override_colors/font_color = Color(0.0431373, 0.533333, 0.980392, 1)
 theme_override_fonts/font = ExtResource("2_8h04c")
 theme_override_font_sizes/font_size = 100
 text = "Кран"
+horizontal_alignment = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 
