@@ -22,11 +22,11 @@ func load_words():
 func get_word(difficulty):
 	var word = ""
 	
-	if difficulty == "easy":
+	if difficulty == "Easy":
 		word = getRandomWord(easy_words, used_easy_words)
-	elif difficulty == "medium":
+	elif difficulty == "Medium":
 		word = getRandomWord(medium_words, used_medium_words)
-	elif difficulty == "hard":
+	elif difficulty == "Hard":
 		word = getRandomWord(hard_words, used_hard_words)
 	
 	return word

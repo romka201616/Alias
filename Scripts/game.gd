@@ -14,3 +14,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+
+func _on_pause_pressed():
+	get_node("Pause").visible = true
+	get_node("Timer").paused = true
+
+
+func _on_unpause_pressed():
+	get_node("Pause").visible = false
+	get_node("Timer").paused = false

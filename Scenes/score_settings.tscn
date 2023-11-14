@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2benik0ntmfy"]
+
+[ext_resource type="Texture2D" uid="uid://bfllikdbkkrx7" path="res://Sprites/Редактирование ответов.png" id="1_drken"]
+[ext_resource type="Texture2D" uid="uid://oe0yoxc3bvj" path="res://Sprites/WordShowRectangle.png" id="2_5fv2s"]
+[ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_y8y58"]
+[ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="4_jq7wv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02ose"]
+font = ExtResource("2_y8y58")
+font_size = 100
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lyx2"]
+texture = ExtResource("4_jq7wv")
+region_rect = Rect2(2480, 7796, 1140, 196)
+
+[node name="ScoreSettings" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1080.0
+offset_bottom = 2340.0
+color = Color(0.0431373, 0.533333, 0.980392, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="РедактированиеОтветов" type="Sprite2D" parent="Background"]
+position = Vector2(540, 1200)
+texture = ExtResource("1_drken")
+
+[node name="WordShowRectangle" type="Sprite2D" parent="Background"]
+position = Vector2(538, 1063)
+texture = ExtResource("2_5fv2s")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
+offset_top = 139.0
+offset_right = 1080.0
+offset_bottom = 280.0
+text = "Счёт: 8"
+label_settings = SubResource("LabelSettings_02ose")
+horizontal_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="WordPanel" type="Panel" parent="Buttons"]
+offset_left = 96.0
+offset_top = 456.0
+offset_right = 975.0
+offset_bottom = 588.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4lyx2")

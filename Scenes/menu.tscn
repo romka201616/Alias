@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://di6jd0trl202l"]
+[gd_scene load_steps=16 format=3 uid="uid://di6jd0trl202l"]
 
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="2_48msq"]
 [ext_resource type="Texture2D" uid="uid://kdi8kgpj847b" path="res://Sprites/Главное меню фон.png" id="2_fowkf"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="5_6jpe4"]
 [ext_resource type="PackedScene" uid="uid://cl43vt1pb4dcl" path="res://Scenes/final_screen.tscn" id="6_ht2kn"]
 [ext_resource type="PackedScene" uid="uid://djwjojf1b4ded" path="res://Scenes/next_team.tscn" id="8_exenx"]
+[ext_resource type="PackedScene" uid="uid://d2benik0ntmfy" path="res://Scenes/score_settings.tscn" id="11_sdsjx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avy46"]
 texture = ExtResource("5_6jpe4")
@@ -94,6 +95,8 @@ position = Vector2(4064, 13)
 
 [node name="Game" parent="." instance=ExtResource("3_tydg7")]
 position = Vector2(1317, 2552)
+
+[node name="ScoreSettings" parent="." instance=ExtResource("11_sdsjx")]
 
 [node name="FinalScreen" parent="." instance=ExtResource("6_ht2kn")]
 

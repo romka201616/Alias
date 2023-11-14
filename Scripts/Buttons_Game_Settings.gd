@@ -60,19 +60,19 @@ func _on_score_70_pressed():
 	get_node("Score/Score70").disabled = true
 
 func _on_low_pressed():
-	difficulty = "easy"
+	difficulty = "Easy"
 	get_node("Difficulty/Low").disabled = true
 	get_node("Difficulty/Medium").disabled = false
 	get_node("Difficulty/Hard").disabled = false
 	
 func _on_medium_pressed():
-	difficulty = "medium"
+	difficulty = "Medium"
 	get_node("Difficulty/Low").disabled = false
 	get_node("Difficulty/Medium").disabled = true
 	get_node("Difficulty/Hard").disabled = false
 	
 func _on_hard_pressed():
-	difficulty = "hard"
+	difficulty = "Hard"
 	get_node("Difficulty/Low").disabled = false
 	get_node("Difficulty/Medium").disabled = false
 	get_node("Difficulty/Hard").disabled = true

@@ -6,8 +6,14 @@ var is_inside_accept = false
 var offset: Vector2
 var default_pos  = Vector2(540, 1456)
 var word_manager = preload("res://Resources/Words.gd").new()
+var seconds : int
 
 func _process(_delta):
+	seconds = round(get_parent().get_node("Timer").time_left)
+	if seconds % 60 > 9:
+		get_parent().get_node("UI/TimeShow").text = "0" + str(seconds / 60) + ":" + str(seconds%60)
+	else:
+		get_parent().get_node("UI/TimeShow").text = "0" + str(seconds / 60) + ":" + "0" + str(seconds%60)
 	if draggable:
 		if Input.is_action_just_pressed("click"):
 			offset = get_global_mouse_position() - global_position
@@ -33,7 +39,7 @@ func _ready():
 		get_parent().get_node("Timer").start()
 
 func _on_area_2d_mouse_entered():
-	if not Global.is_dragging:
+	if not Global.is_dragging and not get_parent().get_node("Timer").paused:
 		draggable = true
 		scale = Vector2(1.05, 1.05)
 
@@ -60,4 +66,5 @@ func _on_area_2d_body_exited(body):
 
 
 func _on_timer_timeout():
-	get_parent().get_node("UI/TimeShow").text = get_parent().get_node("Timer").time_left
+	
+	
