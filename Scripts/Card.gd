@@ -22,15 +22,17 @@ func _process(_delta):
 			global_position = get_global_mouse_position() - offset
 		elif Input.is_action_just_released("click"):
 			if is_inside_dropable:
-				get_node("Word").text = word_manager.get_word(Global.round.difficulty)
+				Global.words.append(Word.new(get_node("Word").text, is_inside_accept))
 				if is_inside_accept:
 					get_parent().tmp_score += 1
 					get_parent().get_node("UI/Score").text = str(get_parent().tmp_score)
+				get_node("Word").text = word_manager.get_word(Global.round.difficulty)
 			Global.is_dragging = false
 			global_position = default_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.words = []
 	if Global.game_ready_count == 1:
 		word_manager = load("res://Resources/Words.gd").new()
 		word_manager.load_words()
@@ -63,8 +65,10 @@ func _on_area_2d_body_exited(body):
 		is_inside_dropable = false
 		if body.is_in_group("accept"):
 			is_inside_accept = false
+			
 
 
 func _on_timer_timeout():
-	
+	var next_scene = load("res://Scenes/score_settings.tscn")
+	get_tree().change_scene_to_packed(next_scene)
 	

@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://chbvx27b26e03"]
+
+[ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="1_7phh8"]
+[ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_vhjhf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lyx2"]
+texture = ExtResource("1_7phh8")
+region_rect = Rect2(2480, 7796, 1140, 196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nw57p"]
+font = ExtResource("2_vhjhf")
+font_size = 70
+font_color = Color(0.0431373, 0.533333, 0.980392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6s5c7"]
+texture = ExtResource("1_7phh8")
+region_rect = Rect2(1264, 6744, 124, 124)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f2urf"]
+texture = ExtResource("1_7phh8")
+region_rect = Rect2(1264, 6556, 125, 125)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eyxyq"]
+texture = ExtResource("1_7phh8")
+region_rect = Rect2(1432, 6744, 125, 125)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnyob"]
+texture = ExtResource("1_7phh8")
+region_rect = Rect2(1432, 6556, 124, 124)
+
+[node name="WordPanel" type="Panel"]
+custom_minimum_size = Vector2(0, 142)
+offset_right = 892.0
+offset_bottom = 142.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4lyx2")
+
+[node name="Word" type="Label" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 20.0
+offset_right = 623.0
+offset_bottom = 119.0
+text = "Удочка"
+label_settings = SubResource("LabelSettings_nw57p")
+
+[node name="Yes" type="Button" parent="."]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 26.0
+offset_right = 732.0
+offset_bottom = 119.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_6s5c7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6s5c7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6s5c7")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_f2urf")
+theme_override_styles/focus = SubResource("StyleBoxTexture_f2urf")
+disabled = true
+
+[node name="No" type="Button" parent="."]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 26.0
+offset_right = 849.0
+offset_bottom = 119.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_eyxyq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eyxyq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eyxyq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wnyob")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wnyob")

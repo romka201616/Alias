@@ -1,5 +1,7 @@
 extends Node2D
 
+var words : Array[Word]
+
 var next_team_ready_count : int
 
 var game_ready_count : int

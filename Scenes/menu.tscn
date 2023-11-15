@@ -97,6 +97,7 @@ position = Vector2(4064, 13)
 position = Vector2(1317, 2552)
 
 [node name="ScoreSettings" parent="." instance=ExtResource("11_sdsjx")]
+position = Vector2(5503, 7)
 
 [node name="FinalScreen" parent="." instance=ExtResource("6_ht2kn")]
 
