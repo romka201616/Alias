@@ -69,6 +69,8 @@ func _on_area_2d_body_exited(body):
 
 
 func _on_timer_timeout():
+	Global.round.current_team = Global.teams[0]
+	Global.round.current_team.score = get_parent().tmp_score
 	var next_scene = load("res://Scenes/score_settings.tscn")
 	get_tree().change_scene_to_packed(next_scene)
 	
