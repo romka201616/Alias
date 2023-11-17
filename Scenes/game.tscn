@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c002brc1qh862"]
+[gd_scene load_steps=14 format=3 uid="uid://c002brc1qh862"]
 
 [ext_resource type="Texture2D" uid="uid://bb5mfswloqsfm" path="res://Sprites/Игровой экран.png" id="1_3fajm"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_tadni"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bw6wuqbo0ub22" path="res://Scenes/card.tscn" id="2_8t36b"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_xjndt"]
 [ext_resource type="PackedScene" uid="uid://ta1ka87jklbh" path="res://Scenes/right_wall.tscn" id="3_hfuxa"]
+[ext_resource type="Texture2D" uid="uid://dh6resbm4apwc" path="res://Sprites/Deck.png" id="3_qm2k6"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="4_qjaxr"]
 [ext_resource type="Texture2D" uid="uid://dc3wlh4nymdb5" path="res://Sprites/Pause.png" id="8_x15i4"]
 
@@ -38,6 +39,10 @@ metadata/_edit_use_anchors_ = true
 visible = false
 position = Vector2(540, 1200)
 texture = ExtResource("1_3fajm")
+
+[node name="Deck" type="Sprite2D" parent="Background"]
+position = Vector2(543, 1457)
+texture = ExtResource("3_qm2k6")
 
 [node name="UI" type="Node2D" parent="."]
 

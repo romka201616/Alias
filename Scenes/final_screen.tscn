@@ -1,14 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl43vt1pb4dcl"]
+[gd_scene load_steps=11 format=3 uid="uid://cl43vt1pb4dcl"]
 
-[ext_resource type="Texture2D" uid="uid://dgamd7bhqgyao" path="res://Sprites/Экран победы.png" id="1_cjxst"]
+[ext_resource type="Texture2D" uid="uid://cwxvxm7d2j3i4" path="res://Sprites/Экран победы.png" id="1_cjxst"]
 [ext_resource type="Script" path="res://Scripts/final_screen.gd" id="1_mv2yy"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_s4uyr"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="3_bmxm0"]
+[ext_resource type="Texture2D" uid="uid://clnogptnee814" path="res://Sprites/Экран победы фон.png" id="3_jcjmp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ruahd"]
 font = ExtResource("2_s4uyr")
 font_size = 70
 font_color = Color(0.0431373, 0.533333, 0.980392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvxy5"]
+texture = ExtResource("3_bmxm0")
+region_rect = Rect2(2480, 8088, 1140, 196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_acovy"]
+font = ExtResource("2_s4uyr")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_t8p7a"]
+font = ExtResource("2_s4uyr")
+font_size = 72
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0gewd"]
 texture = ExtResource("3_bmxm0")
@@ -26,8 +39,13 @@ color = Color(0.0431373, 0.533333, 0.980392, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ЭкранПобеды" type="Sprite2D" parent="Background"]
+visible = false
 position = Vector2(540, 1200)
 texture = ExtResource("1_cjxst")
+
+[node name="ЭкранПобедыФон" type="Sprite2D" parent="Background"]
+position = Vector2(540, 1200)
+texture = ExtResource("3_jcjmp")
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -49,13 +67,140 @@ text = "Счёт: 23"
 label_settings = SubResource("LabelSettings_ruahd")
 horizontal_alignment = 1
 
+[node name="TeamsContainer" type="VBoxContainer" parent="UI"]
+offset_left = 114.0
+offset_top = 870.0
+offset_right = 970.0
+offset_bottom = 1790.0
+theme_override_constants/separation = 42
+
+[node name="Team2" type="Panel" parent="UI/TeamsContainer"]
+custom_minimum_size = Vector2(850, 147)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dvxy5")
+
+[node name="Name" type="Label" parent="UI/TeamsContainer/Team2"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 683.0
+offset_bottom = 137.0
+text = "КуклусКлан"
+label_settings = SubResource("LabelSettings_acovy")
+
+[node name="Score" type="Label" parent="UI/TeamsContainer/Team2"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 23.0
+offset_right = 815.0
+offset_bottom = 125.0
+text = "23"
+label_settings = SubResource("LabelSettings_t8p7a")
+horizontal_alignment = 1
+
+[node name="Team3" type="Panel" parent="UI/TeamsContainer"]
+custom_minimum_size = Vector2(850, 147)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dvxy5")
+
+[node name="Name" type="Label" parent="UI/TeamsContainer/Team3"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 683.0
+offset_bottom = 137.0
+text = "КуклусКлан"
+label_settings = SubResource("LabelSettings_acovy")
+
+[node name="Score" type="Label" parent="UI/TeamsContainer/Team3"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 23.0
+offset_right = 815.0
+offset_bottom = 125.0
+text = "23"
+label_settings = SubResource("LabelSettings_t8p7a")
+horizontal_alignment = 1
+
+[node name="Team4" type="Panel" parent="UI/TeamsContainer"]
+custom_minimum_size = Vector2(850, 147)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dvxy5")
+
+[node name="Name" type="Label" parent="UI/TeamsContainer/Team4"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 683.0
+offset_bottom = 137.0
+text = "КуклусКлан"
+label_settings = SubResource("LabelSettings_acovy")
+
+[node name="Score" type="Label" parent="UI/TeamsContainer/Team4"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 23.0
+offset_right = 815.0
+offset_bottom = 125.0
+text = "23"
+label_settings = SubResource("LabelSettings_t8p7a")
+horizontal_alignment = 1
+
+[node name="Team5" type="Panel" parent="UI/TeamsContainer"]
+custom_minimum_size = Vector2(850, 147)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dvxy5")
+
+[node name="Name" type="Label" parent="UI/TeamsContainer/Team5"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 683.0
+offset_bottom = 137.0
+text = "КуклусКлан"
+label_settings = SubResource("LabelSettings_acovy")
+
+[node name="Score" type="Label" parent="UI/TeamsContainer/Team5"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 23.0
+offset_right = 815.0
+offset_bottom = 125.0
+text = "23"
+label_settings = SubResource("LabelSettings_t8p7a")
+horizontal_alignment = 1
+
+[node name="Team6" type="Panel" parent="UI/TeamsContainer"]
+custom_minimum_size = Vector2(850, 147)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dvxy5")
+
+[node name="Name" type="Label" parent="UI/TeamsContainer/Team6"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 683.0
+offset_bottom = 137.0
+text = "КуклусКлан"
+label_settings = SubResource("LabelSettings_acovy")
+
+[node name="Score" type="Label" parent="UI/TeamsContainer/Team6"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 23.0
+offset_right = 815.0
+offset_bottom = 125.0
+text = "23"
+label_settings = SubResource("LabelSettings_t8p7a")
+horizontal_alignment = 1
+
 [node name="FinalScreenButtons" type="Node2D" parent="."]
 
 [node name="NewGame" type="Button" parent="FinalScreenButtons"]
 offset_left = 263.0
-offset_top = 1719.0
+offset_top = 1814.0
 offset_right = 831.0
-offset_bottom = 1909.0
+offset_bottom = 2004.0
 theme_override_colors/font_color = Color(0.0431373, 0.533333, 0.980392, 1)
 theme_override_colors/font_pressed_color = Color(0.0431373, 0.533333, 0.980392, 1)
 theme_override_colors/font_hover_color = Color(0.0431373, 0.533333, 0.980392, 1)
@@ -74,9 +219,9 @@ text = "Новая игра"
 
 [node name="Rematch" type="Button" parent="FinalScreenButtons"]
 offset_left = 263.0
-offset_top = 1936.0
+offset_top = 2031.0
 offset_right = 831.0
-offset_bottom = 2126.0
+offset_bottom = 2221.0
 theme_override_colors/font_color = Color(0.0431373, 0.533333, 0.980392, 1)
 theme_override_colors/font_pressed_color = Color(0.0431373, 0.533333, 0.980392, 1)
 theme_override_colors/font_hover_color = Color(0.0431373, 0.533333, 0.980392, 1)
@@ -92,3 +237,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_0gewd")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_0gewd")
 theme_override_styles/focus = SubResource("StyleBoxTexture_0gewd")
 text = "Переиграть"
+
+[connection signal="pressed" from="FinalScreenButtons/NewGame" to="." method="_on_new_game_pressed"]

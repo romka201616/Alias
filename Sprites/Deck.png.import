@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwxvxm7d2j3i4"
-path="res://.godot/imported/Экран победы.png-3f7a242006108e00f5f028e4ed30727d.ctex"
+uid="uid://dh6resbm4apwc"
+path="res://.godot/imported/Deck.png-684f4bb1ee17d888a3135ba73f06491f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Экран победы.png"
-dest_files=["res://.godot/imported/Экран победы.png-3f7a242006108e00f5f028e4ed30727d.ctex"]
+source_file="res://Sprites/Deck.png"
+dest_files=["res://.godot/imported/Deck.png-684f4bb1ee17d888a3135ba73f06491f.ctex"]
 
 [params]
 

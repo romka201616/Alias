@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2benik0ntmfy"]
+[gd_scene load_steps=10 format=3 uid="uid://d2benik0ntmfy"]
 
 [ext_resource type="Texture2D" uid="uid://bfllikdbkkrx7" path="res://Sprites/Редактирование ответов.png" id="1_drken"]
 [ext_resource type="Script" path="res://Scripts/score_settings.gd" id="1_t6lk3"]
 [ext_resource type="Texture2D" uid="uid://oe0yoxc3bvj" path="res://Sprites/WordShowRectangle.png" id="2_5fv2s"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_y8y58"]
+[ext_resource type="Texture2D" uid="uid://b8wrhek4vyjqc" path="res://Sprites/Настрока команд фон.png" id="3_6xpeq"]
 [ext_resource type="PackedScene" uid="uid://chbvx27b26e03" path="res://Scenes/word_panel.tscn" id="5_2yaqe"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="5_07uvx"]
 [ext_resource type="Script" path="res://Scripts/WordPanel.gd" id="5_lqxuv"]
@@ -28,6 +29,10 @@ visible = false
 position = Vector2(540, 1200)
 texture = ExtResource("1_drken")
 
+[node name="НастрокаКомандФон" type="Sprite2D" parent="Background"]
+position = Vector2(540, 1200)
+texture = ExtResource("3_6xpeq")
+
 [node name="WordShowRectangle" type="Sprite2D" parent="Background"]
 position = Vector2(536.5, 1063)
 scale = Vector2(1.00305, 1)
@@ -47,12 +52,14 @@ horizontal_alignment = 1
 
 [node name="WordsScroll" type="ScrollContainer" parent="Buttons"]
 offset_left = 93.0
-offset_top = 448.0
+offset_top = 351.0
 offset_right = 980.0
-offset_bottom = 1668.0
+offset_bottom = 1775.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
 
 [node name="WordsContainer" type="VBoxContainer" parent="Buttons/WordsScroll"]
-custom_minimum_size = Vector2(880, 1220)
+custom_minimum_size = Vector2(880, 1424)
 layout_mode = 2
 theme_override_constants/separation = 40
 script = ExtResource("5_lqxuv")

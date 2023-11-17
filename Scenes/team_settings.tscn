@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://55kqvo1rwxt5"]
+[gd_scene load_steps=12 format=3 uid="uid://55kqvo1rwxt5"]
 
 [ext_resource type="Texture2D" uid="uid://delrf4hca303q" path="res://Sprites/TeamSettingsSprite.png" id="1_lpu3r"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_h1ryk"]
+[ext_resource type="Texture2D" uid="uid://b8wrhek4vyjqc" path="res://Sprites/Настрока команд фон.png" id="2_pw41w"]
 [ext_resource type="Texture2D" uid="uid://dfqk3en1ti7cq" path="res://Themes/UI3.png" id="3_8n8jg"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="4_w8ecj"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="6_1c21l"]
@@ -113,6 +114,10 @@ visible = false
 position = Vector2(540, 1200)
 scale = Vector2(3, 3)
 texture = ExtResource("1_lpu3r")
+
+[node name="НастрокаКомандФон" type="Sprite2D" parent="Background"]
+position = Vector2(540, 1200)
+texture = ExtResource("2_pw41w")
 
 [node name="UI" type="Node2D" parent="."]
 

@@ -10,6 +10,10 @@ var seconds : int
 
 func _process(_delta):
 	seconds = round(get_parent().get_node("Timer").time_left)
+	if seconds < 10:
+		get_parent().get_node("UI/TimeShow").modulate = Color(255, 0, 0)
+	else:
+		get_parent().get_node("UI/TimeShow").modulate = Color(255, 255, 255)
 	if seconds % 60 > 9:
 		get_parent().get_node("UI/TimeShow").text = "0" + str(seconds / 60) + ":" + str(seconds%60)
 	else:
@@ -20,6 +24,7 @@ func _process(_delta):
 			Global.is_dragging = true
 		if Input.is_action_pressed("click"):
 			global_position = get_global_mouse_position() - offset
+			global_rotation_degrees = (global_position.x - 540) * 0.05
 		elif Input.is_action_just_released("click"):
 			if is_inside_dropable:
 				Global.words.append(Word.new(get_node("Word").text, is_inside_accept))
@@ -29,6 +34,7 @@ func _process(_delta):
 				get_node("Word").text = word_manager.get_word(Global.round.difficulty)
 			Global.is_dragging = false
 			global_position = default_pos
+			global_rotation_degrees = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

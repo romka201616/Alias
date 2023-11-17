@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwxvxm7d2j3i4"
-path="res://.godot/imported/Экран победы.png-3f7a242006108e00f5f028e4ed30727d.ctex"
+uid="uid://b8wrhek4vyjqc"
+path="res://.godot/imported/Настрока команд фон.png-6b20207d06ddca7fc837420e68a4a684.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Экран победы.png"
-dest_files=["res://.godot/imported/Экран победы.png-3f7a242006108e00f5f028e4ed30727d.ctex"]
+source_file="res://Sprites/Настрока команд фон.png"
+dest_files=["res://.godot/imported/Настрока команд фон.png-6b20207d06ddca7fc837420e68a4a684.ctex"]
 
 [params]
 
