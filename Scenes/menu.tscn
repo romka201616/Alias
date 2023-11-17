@@ -100,6 +100,7 @@ position = Vector2(1317, 2552)
 position = Vector2(5503, 7)
 
 [node name="FinalScreen" parent="." instance=ExtResource("6_ht2kn")]
+position = Vector2(6902, 0)
 
 [node name="Global" type="Node2D" parent="."]
 script = ExtResource("3_5xgv7")

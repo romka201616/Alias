@@ -5,6 +5,7 @@ var words : Array[Word]
 var next_team_ready_count : int
 var game_ready_count : int
 var score_ready_count : int
+var final_ready_count : int
 
 var is_dragging : bool = false
 
@@ -48,7 +49,7 @@ func _ready():
 	next_team_ready_count = 0
 	game_ready_count = 0
 	score_ready_count = 0
-
+	final_ready_count = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

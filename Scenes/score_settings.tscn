@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2benik0ntmfy"]
+[gd_scene load_steps=9 format=3 uid="uid://d2benik0ntmfy"]
 
 [ext_resource type="Texture2D" uid="uid://bfllikdbkkrx7" path="res://Sprites/Редактирование ответов.png" id="1_drken"]
+[ext_resource type="Script" path="res://Scripts/score_settings.gd" id="1_t6lk3"]
 [ext_resource type="Texture2D" uid="uid://oe0yoxc3bvj" path="res://Sprites/WordShowRectangle.png" id="2_5fv2s"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_y8y58"]
 [ext_resource type="PackedScene" uid="uid://chbvx27b26e03" path="res://Scenes/word_panel.tscn" id="5_2yaqe"]
+[ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="5_07uvx"]
 [ext_resource type="Script" path="res://Scripts/WordPanel.gd" id="5_lqxuv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_02ose"]
@@ -11,6 +13,7 @@ font = ExtResource("2_y8y58")
 font_size = 100
 
 [node name="ScoreSettings" type="Node2D"]
+script = ExtResource("1_t6lk3")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -54,9 +57,19 @@ layout_mode = 2
 theme_override_constants/separation = 40
 script = ExtResource("5_lqxuv")
 
+[node name="Ok" type="Button" parent="Buttons"]
+offset_left = 172.0
+offset_top = 1809.0
+offset_right = 903.0
+offset_bottom = 2063.0
+theme = ExtResource("5_07uvx")
+text = "Далее"
+
 [node name="WordPanel" parent="." instance=ExtResource("5_2yaqe")]
 visible = false
 offset_left = 93.0
 offset_top = 448.0
 offset_right = 973.0
 offset_bottom = 590.0
+
+[connection signal="pressed" from="Buttons/Ok" to="." method="_on_ok_pressed"]
