@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://di6jd0trl202l"]
+[gd_scene load_steps=17 format=3 uid="uid://di6jd0trl202l"]
 
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="2_48msq"]
 [ext_resource type="Texture2D" uid="uid://kdi8kgpj847b" path="res://Sprites/Главное меню фон.png" id="2_fowkf"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://lugej58dqox" path="res://Scenes/game_settings.tscn" id="4_3xja1"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="5_6jpe4"]
 [ext_resource type="PackedScene" uid="uid://cl43vt1pb4dcl" path="res://Scenes/final_screen.tscn" id="6_ht2kn"]
+[ext_resource type="PackedScene" uid="uid://cd00ddotdtiex" path="res://Scenes/help.tscn" id="7_7yns3"]
 [ext_resource type="PackedScene" uid="uid://djwjojf1b4ded" path="res://Scenes/next_team.tscn" id="8_exenx"]
 [ext_resource type="PackedScene" uid="uid://d2benik0ntmfy" path="res://Scenes/score_settings.tscn" id="11_sdsjx"]
 
@@ -83,6 +84,8 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_sebsm")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_sebsm")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_sebsm")
 theme_override_styles/focus = SubResource("StyleBoxTexture_sebsm")
+
+[node name="Help" parent="." instance=ExtResource("7_7yns3")]
 
 [node name="TeamSettings" parent="." instance=ExtResource("3_rtv31")]
 position = Vector2(1295, 23)
