@@ -3,9 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Global.final_ready_count == 0:
-		Global.final_ready_count = 1
-	else:
+	if Global.round != null and Global.round.current_team.score >= Global.round.score:
 		get_node("UI/WinnerName").text = Global.round.current_team.team_name
 		get_node("UI/WinnerScore").text = "Счёт: " + str(Global.teams[0].score)
 		for i in range(2, 7):

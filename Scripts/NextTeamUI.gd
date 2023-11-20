@@ -12,8 +12,3 @@ func _ready():
 			get_node("TeamShowContainer/Team" + str(i)).show()
 			get_node("TeamShowContainer/Team" + str(i) + "/Name").text = Global.teams[i-1].team_name
 			get_node("TeamShowContainer/Team" + str(i) + "/Score").text = str(Global.teams[i-1].score)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-

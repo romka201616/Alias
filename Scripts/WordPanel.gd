@@ -4,7 +4,7 @@ var score_label : Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Global.score_ready_count == 1:
+	if Global.teams.size() >= 2 and Global.round != null:
 		score_label = get_parent().get_parent().get_parent().get_node("UI/Score")
 		Global.round.current_team = Global.teams[0]
 		score_label.text = "Счёт: " + str(Global.round.current_team.score)
@@ -20,8 +20,6 @@ func _ready():
 			yes_button.disabled = Global.words[i].accepted
 			no_button.disabled = not Global.words[i].accepted 
 			add_child(cloned_node)
-	else:
-		Global.score_ready_count = 1
 
 func yes_pressed(yes_button: Button, no_button: Button):
 	yes_button.disabled = true

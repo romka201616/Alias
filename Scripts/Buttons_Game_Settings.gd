@@ -9,10 +9,6 @@ func _ready():
 	time = 30
 	score = 30
 	difficulty = "Easy"
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_back_pressed():
 	var next_scene = load("res://Scenes/team_settings.tscn")

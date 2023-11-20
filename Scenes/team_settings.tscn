@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://55kqvo1rwxt5"]
+[gd_scene load_steps=11 format=3 uid="uid://55kqvo1rwxt5"]
 
 [ext_resource type="Texture2D" uid="uid://delrf4hca303q" path="res://Sprites/TeamSettingsSprite.png" id="1_lpu3r"]
 [ext_resource type="FontFile" uid="uid://byg8t12wry6qp" path="res://Fonts/Nunito-Bold.ttf" id="2_h1ryk"]
@@ -6,27 +6,33 @@
 [ext_resource type="Texture2D" uid="uid://dfqk3en1ti7cq" path="res://Themes/UI3.png" id="3_8n8jg"]
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="4_w8ecj"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="6_1c21l"]
+[ext_resource type="PackedScene" uid="uid://m2iy22x1tvxq" path="res://Scenes/team_panel.tscn" id="7_og265"]
 
 [sub_resource type="GDScript" id="GDScript_i4qqr"]
 script/source = "extends Node2D
 
+var input_dialog = null
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position_buttons()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	create_buttons()
 	
-func position_buttons():
-	for i in range(1, 7):
-		get_node(\"Teams/TeamPanel\" + str(i)).hide()
+func create_buttons():
+	for i in range(get_node(\"Teams\").get_child_count()):
+		get_node(\"Teams\").remove_child(get_node(\"Teams\").get_child(0))
 		
-	for i in range(1, Global.teams_amount+1):
-		get_node(\"Teams/TeamPanel\" + str(i) + \"/Delete\").connect(\"pressed\", remove_team.bind(Global.teams[i - 1]))
-		get_node(\"Teams/TeamPanel\" + str(i) + \"/Label\").text = Global.teams[i-1].team_name
-		get_node(\"Teams/TeamPanel\" + str(i)).show()
+	var node = preload(\"res://Scenes/team_panel.tscn\")
+	for i in range(Global.teams_amount):
+		var cloned_node = node.instantiate()
+		cloned_node.position = Global.teams_positions[i]
+		var label = cloned_node.get_node(\"Name\")
+		label.text = Global.teams[i].team_name
+		var edit_button = cloned_node.get_node(\"Edit\")
+		var delete_button = cloned_node.get_node(\"Delete\")
+		edit_button.connect(\"pressed\", edit_team.bind(Global.teams[i], i))
+		delete_button.connect(\"pressed\", remove_team.bind(Global.teams[i], i))
+		get_node(\"Teams\").add_child(cloned_node)
 		
 	match Global.teams_amount:
 		0:
@@ -47,31 +53,38 @@ func position_buttons():
 		6:
 			get_node(\"AddTeam\").hide()
 	
-func change_name(team : Team, teamIndex: int, i: int):
-	var line_edit = LineEdit.new()
-	line_edit.text = team.team_name
-	line_edit.rect_min_size =  get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Label\").text
-	line_edit.position =  get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Label\").position
-	get_node(\"Teams/TeamPanel\" + str(i)).add_child(line_edit)
+func edit_team(team : Team, teamIndex: int):
+	if input_dialog == null:
+		input_dialog = LineEdit.new()
+		input_dialog.position = Vector2(0, -100)
+		input_dialog.connect(\"text_changed\", _on_TextEntered.bind(team))
+		get_tree().get_root().add_child(input_dialog)
+		input_dialog.grab_focus()
+	else:
+		input_dialog.queue_free()
+	create_buttons()
+	
+func _on_TextEntered(text, team : Team):
+	team.team_name = text
+	create_buttons()
 
-	position_buttons()
+func _input(event):
+	if event is InputEventScreenTouch and input_dialog != null:
+		if input_dialog.has_focus() and event.pressed:
+			input_dialog.queue_free()
 
 func remove_team(team : Team, teamIndex: int):
 	Global.teams_names.push_back(team.team_name)
 	Global.teams_positions.pop_back()
 	Global.teams.remove_at(teamIndex)
 	team._exit_tree()
-	position_buttons()
+	create_buttons()
 
 func _on_add_team_pressed():
 	Global.teams.push_back(Team.new())
 	print(Global.teams_amount)
-	get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Delete\").connect(\"pressed\", remove_team.bind(Global.teams[Global.teams_amount - 1], Global.teams_amount - 1))
-	get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Edit\").connect(\"pressed\", change_name.bind(Global.teams[Global.teams_amount - 1], Global.teams_amount - 1), Global.teams_amount)
-	get_node(\"Teams/TeamPanel\" + str(Global.teams_amount) + \"/Label\").text = Global.teams[Global.teams_amount - 1].team_name
-	get_node(\"Teams/TeamPanel\" + str(Global.teams_amount)).show()
 	Global.teams_positions.push_back(Global.teams_positions_examples[Global.teams_amount-1])
-	position_buttons()
+	create_buttons()
 
 
 func _on_ok_pressed():
@@ -91,14 +104,6 @@ region_rect = Rect2(3948, 668, 172, 172)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8kkn4"]
 texture = ExtResource("3_8n8jg")
 region_rect = Rect2(2488, 628, 640, 392)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2osa8"]
-texture = ExtResource("6_1c21l")
-region_rect = Rect2(1460, 3016, 288, 288)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xibx5"]
-texture = ExtResource("6_1c21l")
-region_rect = Rect2(1828, 3016, 288, 288)
 
 [node name="TeamSettings" type="Node2D"]
 
@@ -133,6 +138,8 @@ text = "Команды"
 [node name="Buttons" type="Node2D" parent="."]
 script = SubResource("GDScript_i4qqr")
 
+[node name="Teams" type="Node2D" parent="Buttons"]
+
 [node name="Back" type="Button" parent="Buttons"]
 offset_left = 52.0
 offset_top = 158.0
@@ -164,264 +171,11 @@ offset_bottom = 2063.0
 theme = ExtResource("4_w8ecj")
 text = "Далее"
 
-[node name="Teams" type="Node2D" parent="Buttons"]
-
-[node name="TeamPanel1" type="Panel" parent="Buttons/Teams"]
-visible = false
-offset_left = 42.0
-offset_top = 632.0
-offset_right = 528.0
-offset_bottom = 934.0
-theme = ExtResource("4_w8ecj")
-
-[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel1"]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 132.0
-offset_right = 225.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
-
-[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel1"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 132.0
-offset_right = 367.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
-
-[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel1"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 9.0
-offset_right = 416.0
-offset_bottom = 95.0
-theme = ExtResource("4_w8ecj")
-text = "Негрилы"
-horizontal_alignment = 1
-
-[node name="TeamPanel2" type="Panel" parent="Buttons/Teams"]
-visible = false
-offset_left = 545.0
-offset_top = 632.0
-offset_right = 1031.0
-offset_bottom = 934.0
-theme = ExtResource("4_w8ecj")
-
-[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel2"]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 132.0
-offset_right = 225.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
-metadata/_edit_use_anchors_ = true
-
-[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel2"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 132.0
-offset_right = 367.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
-
-[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel2"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 9.0
-offset_right = 416.0
-offset_bottom = 95.0
-theme = ExtResource("4_w8ecj")
-text = "Негрилы"
-horizontal_alignment = 1
-
-[node name="TeamPanel3" type="Panel" parent="Buttons/Teams"]
-visible = false
-offset_left = 42.0
-offset_top = 966.0
-offset_right = 528.0
-offset_bottom = 1268.0
-theme = ExtResource("4_w8ecj")
-
-[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel3"]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 132.0
-offset_right = 225.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
-metadata/_edit_use_anchors_ = true
-
-[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel3"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 132.0
-offset_right = 367.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
-
-[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel3"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 9.0
-offset_right = 416.0
-offset_bottom = 95.0
-theme = ExtResource("4_w8ecj")
-text = "Негрилы"
-horizontal_alignment = 1
-
-[node name="TeamPanel4" type="Panel" parent="Buttons/Teams"]
-visible = false
-offset_left = 545.0
-offset_top = 966.0
-offset_right = 1031.0
-offset_bottom = 1268.0
-theme = ExtResource("4_w8ecj")
-
-[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel4"]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 132.0
-offset_right = 225.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
-metadata/_edit_use_anchors_ = true
-
-[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel4"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 132.0
-offset_right = 367.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
-
-[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel4"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 9.0
-offset_right = 416.0
-offset_bottom = 95.0
-theme = ExtResource("4_w8ecj")
-text = "Негрилы"
-horizontal_alignment = 1
-
-[node name="TeamPanel5" type="Panel" parent="Buttons/Teams"]
-visible = false
-offset_left = 42.0
-offset_top = 1303.0
-offset_right = 528.0
-offset_bottom = 1605.0
-theme = ExtResource("4_w8ecj")
-
-[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel5"]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 132.0
-offset_right = 225.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
-metadata/_edit_use_anchors_ = true
-
-[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel5"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 132.0
-offset_right = 367.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
-
-[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel5"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 9.0
-offset_right = 416.0
-offset_bottom = 95.0
-theme = ExtResource("4_w8ecj")
-text = "Негрилы"
-horizontal_alignment = 1
-
-[node name="TeamPanel6" type="Panel" parent="Buttons/Teams"]
-visible = false
-offset_left = 545.0
-offset_top = 1303.0
-offset_right = 1031.0
-offset_bottom = 1605.0
-theme = ExtResource("4_w8ecj")
-
-[node name="Edit" type="Button" parent="Buttons/Teams/TeamPanel6"]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 132.0
-offset_right = 225.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
-theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
-metadata/_edit_use_anchors_ = true
-
-[node name="Delete" type="Button" parent="Buttons/Teams/TeamPanel6"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 132.0
-offset_right = 367.0
-offset_bottom = 239.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
-theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
-
-[node name="Label" type="Label" parent="Buttons/Teams/TeamPanel6"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 9.0
-offset_right = 416.0
-offset_bottom = 95.0
-theme = ExtResource("4_w8ecj")
-text = "Негрилы"
-horizontal_alignment = 1
+[node name="TeamPanel" parent="Buttons" instance=ExtResource("7_og265")]
+offset_left = 247.0
+offset_top = -378.0
+offset_right = 733.0
+offset_bottom = -76.0
 
 [connection signal="pressed" from="Buttons/Back" to="Buttons" method="_on_back_pressed"]
 [connection signal="pressed" from="Buttons/AddTeam" to="Buttons" method="_on_add_team_pressed"]

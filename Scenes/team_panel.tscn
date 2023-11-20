@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://m2iy22x1tvxq"]
+
+[ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="1_b38lb"]
+[ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="2_bsws2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2osa8"]
+texture = ExtResource("2_bsws2")
+region_rect = Rect2(1460, 3016, 288, 288)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xibx5"]
+texture = ExtResource("2_bsws2")
+region_rect = Rect2(1828, 3016, 288, 288)
+
+[node name="TeamPanel" type="Panel"]
+offset_left = 545.0
+offset_top = 632.0
+offset_right = 1031.0
+offset_bottom = 934.0
+theme = ExtResource("1_b38lb")
+
+[node name="Edit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2osa8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2osa8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 132.0
+offset_right = 367.0
+offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xibx5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xibx5")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 416.0
+offset_bottom = 95.0
+theme = ExtResource("1_b38lb")
+text = "Негрилы"
+horizontal_alignment = 1
