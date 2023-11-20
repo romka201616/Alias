@@ -86,6 +86,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_sebsm")
 theme_override_styles/focus = SubResource("StyleBoxTexture_sebsm")
 
 [node name="Help" parent="." instance=ExtResource("7_7yns3")]
+position = Vector2(5563, 2619)
 
 [node name="TeamSettings" parent="." instance=ExtResource("3_rtv31")]
 position = Vector2(1295, 23)

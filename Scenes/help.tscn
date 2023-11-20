@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://cd00ddotdtiex"]
+[gd_scene load_steps=4 format=3 uid="uid://cd00ddotdtiex"]
+
+[ext_resource type="Script" path="res://Scripts/help.gd" id="1_76mw1"]
+[ext_resource type="PackedScene" uid="uid://bb4vnwps4i2h8" path="res://Scenes/help_14.tscn" id="2_0sgvv"]
+[ext_resource type="PackedScene" uid="uid://smce50lqq3a6" path="res://Scenes/left_wall.tscn" id="3_641dx"]
 
 [node name="Help" type="Node2D"]
+script = ExtResource("1_76mw1")
+
+[node name="Help14" parent="." instance=ExtResource("2_0sgvv")]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="LeftWall" parent="Walls" instance=ExtResource("3_641dx")]
+position = Vector2(-727, 1388)
+script = null
+
+[node name="RightWall" parent="Walls" instance=ExtResource("3_641dx")]
+position = Vector2(1820, 1407)
+script = null
