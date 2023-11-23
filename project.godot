@@ -31,6 +31,10 @@ window/handheld/orientation=1
 
 project/assembly_name="Alias"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [input]
 
 click={
