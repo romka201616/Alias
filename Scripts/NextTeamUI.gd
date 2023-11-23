@@ -3,7 +3,7 @@ extends Node2D
 func _ready():
 	if Global.next_team_ready_count == 0:
 		Global.next_team_ready_count = 1
-	else:
+	elif Global.teams.size() >= 2 and Global.round != null:
 		get_node("NextTurn").text = "Ход: " + Global.teams[0].team_name
 		
 		for i in range(1, 7):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://di6jd0trl202l"]
+[gd_scene load_steps=18 format=3 uid="uid://di6jd0trl202l"]
 
 [ext_resource type="Theme" uid="uid://dci03lr6r0e62" path="res://Themes/new_theme.tres" id="2_48msq"]
 [ext_resource type="Texture2D" uid="uid://kdi8kgpj847b" path="res://Sprites/Главное меню фон.png" id="2_fowkf"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://lugej58dqox" path="res://Scenes/game_settings.tscn" id="4_3xja1"]
 [ext_resource type="Texture2D" uid="uid://dxwrj8ewmaab2" path="res://Themes/UI4.png" id="5_6jpe4"]
 [ext_resource type="PackedScene" uid="uid://cl43vt1pb4dcl" path="res://Scenes/final_screen.tscn" id="6_ht2kn"]
+[ext_resource type="Script" path="res://Scripts/ToHelp.gd" id="7_1qnfo"]
 [ext_resource type="PackedScene" uid="uid://cd00ddotdtiex" path="res://Scenes/help.tscn" id="7_7yns3"]
 [ext_resource type="PackedScene" uid="uid://djwjojf1b4ded" path="res://Scenes/next_team.tscn" id="8_exenx"]
 [ext_resource type="PackedScene" uid="uid://d2benik0ntmfy" path="res://Scenes/score_settings.tscn" id="11_sdsjx"]
@@ -19,7 +20,7 @@
 texture = ExtResource("5_6jpe4")
 region_rect = Rect2(3464, 996, 280, 280)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sebsm"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pru88"]
 texture = ExtResource("5_6jpe4")
 region_rect = Rect2(3464, 648, 280, 280)
 
@@ -54,6 +55,7 @@ text = "Новая игра"
 script = ExtResource("3_gckd6")
 
 [node name="Continue" type="Button" parent="Menu/Buttons"]
+visible = false
 offset_left = 174.0
 offset_top = 1532.0
 offset_right = 905.0
@@ -64,9 +66,9 @@ text = "Продолжить"
 
 [node name="Exit" type="Button" parent="Menu/Buttons"]
 offset_left = 689.0
-offset_top = 1807.0
+offset_top = 1547.0
 offset_right = 908.0
-offset_bottom = 2026.0
+offset_bottom = 1766.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_avy46")
 theme_override_styles/hover = SubResource("StyleBoxTexture_avy46")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_avy46")
@@ -74,16 +76,17 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_avy46")
 theme_override_styles/focus = SubResource("StyleBoxTexture_avy46")
 script = ExtResource("2_h7mey")
 
-[node name="Help" type="Button" parent="Menu/Buttons"]
-offset_left = 172.0
-offset_top = 1808.0
-offset_right = 391.0
-offset_bottom = 2027.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_sebsm")
-theme_override_styles/hover = SubResource("StyleBoxTexture_sebsm")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_sebsm")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_sebsm")
-theme_override_styles/focus = SubResource("StyleBoxTexture_sebsm")
+[node name="ToHelp" type="Button" parent="Menu/Buttons"]
+offset_left = 169.0
+offset_top = 1547.0
+offset_right = 388.0
+offset_bottom = 1766.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_pru88")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pru88")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pru88")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_pru88")
+theme_override_styles/focus = SubResource("StyleBoxTexture_pru88")
+script = ExtResource("7_1qnfo")
 
 [node name="Help" parent="." instance=ExtResource("7_7yns3")]
 position = Vector2(5563, 2619)
@@ -111,3 +114,4 @@ script = ExtResource("3_5xgv7")
 
 [connection signal="pressed" from="Menu/Buttons/NewGame" to="Menu/Buttons/NewGame" method="_on_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Exit" to="Menu/Buttons/Exit" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Buttons/ToHelp" to="Menu/Buttons/ToHelp" method="_on_pressed"]
