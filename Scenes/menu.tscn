@@ -34,6 +34,7 @@ region_rect = Rect2(3464, 648, 280, 280)
 offset_right = 1080.0
 offset_bottom = 2340.0
 color = Color(0.0431373, 0.533333, 0.980392, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ГлавноеМенюФон" type="Sprite2D" parent="Menu/Background"]
 position = Vector2(540, 1200)
@@ -53,6 +54,7 @@ theme_override_fonts/font = ExtResource("3_qukpj")
 theme_override_font_sizes/font_size = 100
 text = "Новая игра"
 script = ExtResource("3_gckd6")
+metadata/_edit_use_anchors_ = true
 
 [node name="Continue" type="Button" parent="Menu/Buttons"]
 visible = false
@@ -75,6 +77,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_avy46")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_avy46")
 theme_override_styles/focus = SubResource("StyleBoxTexture_avy46")
 script = ExtResource("2_h7mey")
+metadata/_edit_use_anchors_ = true
 
 [node name="ToHelp" type="Button" parent="Menu/Buttons"]
 offset_left = 169.0
@@ -87,6 +90,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_pru88")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_pru88")
 theme_override_styles/focus = SubResource("StyleBoxTexture_pru88")
 script = ExtResource("7_1qnfo")
+metadata/_edit_use_anchors_ = true
 
 [node name="Help" parent="." instance=ExtResource("7_7yns3")]
 position = Vector2(5563, 2619)
