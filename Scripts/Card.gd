@@ -39,7 +39,7 @@ func _process(_delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.words = []
-	if Global.game_ready_count == 1 and Global.round != null:
+	if Global.game_ready_count == 1 and Global.round != null and Global.teams.size() >= 2:
 		word_manager = load("res://Resources/Words.gd").new()
 		word_manager.load_words()
 		get_node("Word").text = word_manager.get_word(Global.round.difficulty)

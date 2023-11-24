@@ -93,6 +93,8 @@ func _on_ok_pressed():
 
 
 func _on_back_pressed():
+	for i in range(Global.teams.size()):
+		remove_team(Global.teams[0], 0)
 	var next_scene = load(\"res://Scenes/menu.tscn\")
 	get_tree().change_scene_to_packed(next_scene)
 "

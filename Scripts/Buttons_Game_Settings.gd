@@ -11,6 +11,7 @@ func _ready():
 	difficulty = "Easy"
 
 func _on_back_pressed():
+	Global.round = null
 	var next_scene = load("res://Scenes/team_settings.tscn")
 	get_tree().change_scene_to_packed(next_scene)
 
